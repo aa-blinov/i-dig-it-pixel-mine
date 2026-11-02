@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "review",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["tools/review-server.mjs"],
+      "port": 7803
+    }
+  ]
+}

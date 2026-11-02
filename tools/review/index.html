@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pixel Mine — проверка игрового экрана</title>
+  <style>
+    :root { color-scheme: dark; background: #111719; color: #f2e5bb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100dvh; display: grid; place-items: center; }
+    canvas { display: block; width: min(100vw, 56.25dvh); height: auto; aspect-ratio: 9 / 16; image-rendering: pixelated; touch-action: manipulation; }
+    canvas:focus-visible { outline: 3px solid #fff2a4; outline-offset: -3px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    ::selection { color: #111719; background: #edc271; }
+  </style>
+</head>
+<body>
+  <h1 class="sr-only">I Dig It: Pixel Mine — локальный просмотр</h1>
+  <p id="controls" class="sr-only">Собери три одинаковых материала. На базе используй Tab и Enter для выбора кнопок. В панели «Управление» есть доступное поле с названиями материалов. В шахте стрелки перемещают курсор, Enter выбирает, Escape снимает выбор, R возвращает на базу. M переключает звук.</p>
+  <canvas width="720" height="1280" tabindex="0" aria-label="Игровое поле Pixel Mine" aria-describedby="controls"></canvas>
+  <output class="sr-only" aria-live="off" id="state"></output>
+  <script type="module" src="./runtime-adapter.js"></script>
+</body>
+</html>
