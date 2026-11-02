@@ -23,7 +23,7 @@ export function interfaceCss() {
     s + '{position:fixed;inset:0;z-index:100;pointer-events:none;color:' + t.ink + ';font:18px/1.45 ' + UI_FONT + ';color-scheme:dark;-webkit-font-smoothing:none}',
     s + ' h1,' + s + ' h2,' + s + ' h3,' + s + ' button,' + s + ' .mine-logo,' + s + ' .chip,' + s + ' .mine-stars,' + s + ' .mine-wallet,' + s + ' .mine-rows dd,' + s + ' summary{font-family:' + UI_TITLE_FONT + ';letter-spacing:.5px}',
     s + ' *{box-sizing:border-box}',
-    s + ' .mine-camp,' + s + ' .mine-sheet,' + s + ' .mine-tools,' + s + ' .mine-result-back{pointer-events:auto}',
+    s + ' .mine-camp,' + s + ' .mine-sheet,' + s + ' .mine-tools,' + s + ' .mine-intro,' + s + ' .mine-result-back{pointer-events:auto}',
     s + ' [hidden]{display:none!important}',
     // Panels and buttons: the same bevel as the cockpit.
     s + ' .panel{background:' + t.steel + ';' + bevel + ';padding:18px 20px 22px;margin:0 0 16px}',
@@ -102,7 +102,7 @@ export function interfaceCss() {
     s + ' .mine-rows dd{margin:0;text-align:right}',
     s + ' .mine-rows dd.gold{color:' + t.gold + '}',
     s + ' .mine-unlock{color:' + t.gold + '}',
-    s + ' .mine-card{background:' + t.deep + ';margin:8px 0;padding:10px 12px;font:16px/1.5 system-ui,sans-serif;white-space:pre-wrap;text-align:center}',
+    s + ' .mine-daily-card{background:' + t.deep + ';margin:8px 0;padding:10px 12px;font:16px/1.5 system-ui,sans-serif;white-space:pre-wrap;text-align:center}',
     s + ' [data-result-share-note]:empty{display:none}',
     // Abilities in the toolbar.
     s + ' .mine-abilities{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}',
@@ -170,7 +170,7 @@ export var INTERFACE_HTML = ''
   + '<div class="mine-result-back" data-result hidden><section class="mine-result panel" role="dialog" aria-modal="true" aria-labelledby="mine-result-title">'
   + '<h2 id="mine-result-title" tabindex="-1" data-result-title></h2><p class="mine-stars" data-result-stars></p><dl class="mine-rows" data-result-rows></dl>'
   + '<div class="mine-radio" data-result-radio hidden></div><p class="mine-unlock" data-result-unlock hidden></p>'
-  + '<pre class="mine-card" data-result-card hidden></pre><p class="muted" data-result-share-note role="status"></p>'
+  + '<pre class="mine-daily-card" data-result-card hidden></pre><p class="muted" data-result-share-note role="status"></p>'
   + '<div class="mine-actions"><button class="primary" data-result-share hidden>Поделиться итогом</button><button class="primary" data-result-next></button><button data-result-base>На базу</button></div></section></div>'
   + '<p class="mine-sr" role="status" aria-live="polite" data-announcement></p>';
 

@@ -57,7 +57,7 @@ export var COCKPIT_CSS = [
   '#mine-cockpit .ck-ability.ready{box-shadow:inset 0 0 0 calc(var(--u)*3) #d9a85a}',
   '#mine-cockpit .ck-ability[aria-pressed=true]{background:#8a5f2a}',
   '#mine-cockpit .ck-empty{pointer-events:none;font-size:calc(var(--u)*16);color:#9aa59f;align-items:center;text-align:center}',
-  '#mine-cockpit .ck-ship{background:#1c2427;border:calc(var(--u)*3) solid #111719;box-shadow:inset 0 0 0 calc(var(--u)*2) #69736e;padding:calc(var(--u)*14) calc(var(--u)*18);font-size:max(14px,calc(var(--u)*24));line-height:1.4;z-index:2}',
+  '#mine-cockpit .ck-ship{background:#1c2427;border:calc(var(--u)*3) solid #111719;box-shadow:inset 0 0 0 calc(var(--u)*2) #69736e;padding:calc(var(--u)*14) calc(var(--u)*18);font-size:max(14px,calc(var(--u)*24));line-height:1.4;z-index:2;overflow:auto;box-sizing:border-box}',
   '#mine-cockpit .ck-ship h3{margin:0 0 calc(var(--u)*6);font:calc(var(--u)*22) "Pixel Mine Title",monospace;color:#edc271}',
   '#mine-cockpit .ck-ship p{margin:0}',
   '#mine-cockpit .ck-ship[hidden]{display:none}',
@@ -82,7 +82,7 @@ export function setupCockpit(engine, onMenu) {
     + HOLD_X.map(function (x, i) { return '<button class="ck-lock" data-ck-lock="' + i + '" style="' + box(x, HOLD_Y, 64, 64) + '" aria-label="Закрытое место в трюме"></button>'; }).join('')
     + '<div class="ck-abilities" data-ck-abilities style="' + box(286, 1146, 382, 86) + '"></div>'
     + '<div class="ck-hint" data-ck-hint="0" hidden></div><div class="ck-hint" data-ck-hint="1" hidden></div>'
-    + '<div class="ck-ship" data-ck-ship hidden style="' + box(270, 1012, 430, 230) + '"></div>';
+    + '<div class="ck-ship" data-ck-ship hidden style="' + box(270, 850, 430, 392) + '"></div>';
   document.body.appendChild(root);
   var q = function (s) { return root.querySelector(s); };
   q('[data-ck-menu]').addEventListener('click', onMenu);
