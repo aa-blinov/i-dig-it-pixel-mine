@@ -1,6 +1,7 @@
 // Canvas labels and the interface font.
 import { CONTRACTS, MODULES } from "../config.js";
 import { setCampVisible } from "../game/round.js";
+import { CONTRACT_BRIEFS } from "../story.js";
 import { contractCard, updateNativeInterface } from "./dom-ui.js";
 
 export function uiText(engine, id, text, x, y, width, height, size, color, left) {
@@ -71,7 +72,7 @@ export function updateInterface(engine) {
   if (engine.goalFill) { engine.goalFill.isVisible = !base && engine.mode !== 'daily'; engine.goalFill.setSize(Math.max(2, 508 * Math.min(1, engine.score / engine.goal)), 5); }
   uiText(engine, 'campWallet', 'Кредиты: ' + p.credits, 350, 25, 340, 60, 21);
   uiText(engine, 'campTitle', p.completed === CONTRACTS.length ? 'Лицензия мастера получена' : 'База, контракт ' + contract, 44, 132, 632, 64, 27);
-  var summary = contractCard(contract).join(', ') + '\n' + (engine.campMessage || 'Набери норму, а всё, что сверху, забирай себе');
+  var summary = contractCard(contract).map(function (c) { return c.label + ' ' + c.value; }).join(', ') + '\n' + (engine.campMessage || CONTRACT_BRIEFS.at(contract - 1) || '');
   var collected = Object.keys(p.collection).length;
   uiText(engine, 'campSummary', summary + '\nКоллекция реликвий: ' + collected + '/3', 44, 206, 632, 124, 17);
   uiText(engine, 'campWorkshop', 'Мастерская · слоты ' + p.equipped.length + '/2', 44, 348, 632, 42, 21);

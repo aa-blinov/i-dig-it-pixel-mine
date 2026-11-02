@@ -18,7 +18,7 @@ import { beginRound, chooseContract, contractRate, openCamp, requestLeave, resul
 import { tap } from "../game/turn.js";
 import { contractSetup } from "../model/contracts.js";
 import { colOf, rowOf } from "../model/grid.js";
-import { storyLines } from "../story.js";
+import { CONTRACT_BRIEFS, storyLines } from "../story.js";
 import { enterChallenge } from "./challenge-dialog.js";
 import { COCKPIT_CSS, setupCockpit, updateCockpit } from "./cockpit.js";
 import { INTRO, howToHtml, introSlideHtml } from "./intro.js";
@@ -33,10 +33,11 @@ export function plural(n, one, few, many) {
   return n + ' ' + many;
 }
 
-// The card of a contract: where, how big, how much fuel, how much ore.
+// The card of a contract: where, how big, how much fuel, how much ore,
+// each value under its own label so no figure has to be guessed.
 export function contractCard(number) {
   var setup = contractSetup('contract', number);
-  return [setup.layerName, 'поле ' + setup.dims.cols + '×' + setup.dims.rows, 'топливо ' + setup.moves, 'норма ' + setup.quota];
+  return [{ label: 'Шахта', value: setup.layerName }, { label: 'Поле', value: setup.dims.cols + '×' + setup.dims.rows }, { label: 'Топливо', value: String(setup.moves) }, { label: 'Норма', value: String(setup.quota) }];
 }
 
 function escapeHtml(value) {
@@ -395,9 +396,9 @@ export function updateNativeInterface(engine) {
   text(nodes.title, p.completed === CONTRACTS.length && chosen === next ? 'Лицензия мастера' : 'Контракт ' + chosen);
   text(nodes.wallet, 'Кредиты ' + p.credits);
   var chips = contractCard(chosen), rate = contractRate(engine, chosen);
-  if (rate < 1) chips.push('награда ' + Math.round(rate * 100) + '%');
-  nodes.card.innerHTML = chips.map(function (chip, i) { return '<li class="chip' + (i === 0 || (rate < 1 && i === chips.length - 1) ? ' gold' : '') + '">' + escapeHtml(chip) + '</li>'; }).join('');
-  text(nodes.summary, engine.campMessage || 'Набери норму, а всё, что сверху, забирай себе');
+  if (rate < 1) chips.push({ label: 'Награда', value: Math.round(rate * 100) + '%' });
+  nodes.card.innerHTML = chips.map(function (chip, i) { return '<li class="chip stat' + (rate < 1 && i === chips.length - 1 ? ' gold' : '') + '"><small>' + escapeHtml(chip.label) + '</small><b>' + escapeHtml(chip.value) + '</b></li>'; }).join('');
+  text(nodes.summary, engine.campMessage || CONTRACT_BRIEFS.at(chosen - 1) || '');
   text(nodes.start, chosen < next || p.completed === CONTRACTS.length ? 'Повторить контракт ' + chosen : 'Начать контракт ' + chosen);
   var lines = !inResult && engine.storyBeat !== null && engine.storyBeat !== undefined ? storyLines(engine.storyBeat) : [];
   nodes.radio.hidden = !lines.length;

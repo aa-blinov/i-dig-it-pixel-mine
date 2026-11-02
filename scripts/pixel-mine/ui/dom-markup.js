@@ -46,6 +46,10 @@ export function interfaceCss() {
     s + ' .mine-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px 15px}',
     s + ' .mine-logo{font-size:24px;color:' + t.gold + ';text-shadow:2px 2px 0 ' + t.outline + ';letter-spacing:1px}',
     s + ' .mine-wallet{margin:0;font-size:20px;font-variant-numeric:tabular-nums}',
+    // A contract fact: a quiet label over its value.
+    s + ' .chips .chip.stat{display:flex;flex-direction:column;gap:4px;flex:1 1 110px;padding:8px 12px 10px}',
+    s + ' .chips .chip.stat small{font-size:13px;color:' + t.muted + '}',
+    s + ' .chips .chip.stat b{font-family:"Pixel Mine Title","Pixel Mine",monospace;font-weight:normal;font-size:15px;color:' + t.gold + '}',
     s + ' .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;padding:0}',
     s + ' .chip{display:inline-block;background:' + t.deep + ';border:3px solid ' + t.outline + ';padding:3px 10px 5px;color:' + t.ink + '}',
     s + ' .chip.gold{color:' + t.gold + '}',

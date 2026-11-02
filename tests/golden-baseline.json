@@ -1466,235 +1466,235 @@
  },
  "keyboard": {
   "ticks": 597,
-  "chain": "e3b65720e1d6a743",
+  "chain": "090157f2097f80f4",
   "checkpoints": [
    {
     "label": "boot",
-    "hash": "f704472b16908dcf",
+    "hash": "2fc1a20eb736b132",
     "score": 0,
     "moves": 20,
     "phase": "base"
    },
    {
     "label": "picked",
-    "hash": "bd9cf3faef5c5083",
+    "hash": "4ddd694edbea085c",
     "score": 0,
     "moves": 20,
     "phase": "idle"
    },
    {
     "label": "esc",
-    "hash": "0fb26e4ff61a7afb",
+    "hash": "c4f5133bcde24281",
     "score": 0,
     "moves": 20,
     "phase": "idle"
    },
    {
     "label": "turn 0",
-    "hash": "bf3c56b1cb4bd2f8",
+    "hash": "28827065ae864dde",
     "score": 1400,
     "moves": 19,
     "phase": "idle"
    },
    {
     "label": "picked",
-    "hash": "3b3ee9129dbd8075",
+    "hash": "2d3a6a825bcdf2d0",
     "score": 1400,
     "moves": 19,
     "phase": "idle"
    },
    {
     "label": "esc",
-    "hash": "706d4548e7060a9a",
+    "hash": "d6e1cd0ecced5182",
     "score": 1400,
     "moves": 19,
     "phase": "idle"
    },
    {
     "label": "turn 1",
-    "hash": "b7d5dee51545d310",
+    "hash": "16ef12a2380eb223",
     "score": 1598,
     "moves": 18,
     "phase": "idle"
    },
    {
     "label": "picked",
-    "hash": "0d9c490d2821ddd0",
+    "hash": "3c44321293a13bbf",
     "score": 1598,
     "moves": 18,
     "phase": "idle"
    },
    {
     "label": "esc",
-    "hash": "4c3c16739997e8b2",
+    "hash": "c9d89ff58ce6c835",
     "score": 1598,
     "moves": 18,
     "phase": "idle"
    },
    {
     "label": "turn 2",
-    "hash": "6a636a0c566a59e8",
+    "hash": "bdd05baa27f81539",
     "score": 1736,
     "moves": 17,
     "phase": "idle"
    },
    {
     "label": "picked",
-    "hash": "b8f168fedb9a396f",
+    "hash": "a80e1ca3e05992aa",
     "score": 1736,
     "moves": 17,
     "phase": "idle"
    },
    {
     "label": "esc",
-    "hash": "76ea8dc7419ee758",
+    "hash": "978627dbf8b79bdc",
     "score": 1736,
     "moves": 17,
     "phase": "idle"
    },
    {
     "label": "turn 3",
-    "hash": "9685444df325ddd6",
+    "hash": "798af016c978481d",
     "score": 1802,
     "moves": 16,
     "phase": "idle"
    },
    {
     "label": "picked",
-    "hash": "2d63c3275759bf8d",
+    "hash": "fbd248c7eb921dcb",
     "score": 1802,
     "moves": 16,
     "phase": "idle"
    },
    {
     "label": "esc",
-    "hash": "96d99ac25fa38b01",
+    "hash": "0757788f58cd619c",
     "score": 1802,
     "moves": 16,
     "phase": "idle"
    },
    {
     "label": "turn 4",
-    "hash": "fdf202389b66c41b",
+    "hash": "092cebc956a2a592",
     "score": 1950,
     "moves": 15,
     "phase": "idle"
    },
    {
     "label": "picked",
-    "hash": "f553bd2adb800d10",
+    "hash": "bda813186fe7d9c9",
     "score": 1950,
     "moves": 15,
     "phase": "idle"
    },
    {
     "label": "esc",
-    "hash": "ceb99287049fc18b",
+    "hash": "bb2d8df6130883d7",
     "score": 1950,
     "moves": 15,
     "phase": "idle"
    },
    {
     "label": "turn 5",
-    "hash": "744568920a017125",
+    "hash": "96ec008f4616efb5",
     "score": 2046,
     "moves": 14,
     "phase": "idle"
    },
    {
     "label": "muted",
-    "hash": "99c1bafe19f107a6",
+    "hash": "a37780e6957c7687",
     "score": 2046,
     "moves": 14,
     "phase": "idle"
    },
    {
     "label": "abort",
-    "hash": "d6bb4ad74c49a2f1",
+    "hash": "3941f48edc0eaf22",
     "score": 2046,
     "moves": 14,
     "phase": "idle"
    },
    {
     "label": "Digit1",
-    "hash": "d6bb4ad74c49a2f1",
+    "hash": "3941f48edc0eaf22",
     "score": 2046,
     "moves": 14,
     "phase": "idle"
    },
    {
     "label": "turn 1",
-    "hash": "e95c86fccb6b195e",
+    "hash": "d91c8ebb4d1c59c7",
     "score": 2178,
     "moves": 13,
     "phase": "idle"
    },
    {
     "label": "turn 2",
-    "hash": "7bff0dafdadb6b18",
+    "hash": "3cb74733003d9391",
     "score": 2220,
     "moves": 12,
     "phase": "idle"
    },
    {
     "label": "Digit2",
-    "hash": "23a0accc44dfcd72",
+    "hash": "fb827c95348097c1",
     "score": 2220,
     "moves": 12,
     "phase": "base"
    },
    {
     "label": "KeyQ",
-    "hash": "45d2b94532ef2a3c",
+    "hash": "cfb7eb97a2582ced",
     "score": 2220,
     "moves": 12,
     "phase": "base"
    },
    {
     "label": "KeyW",
-    "hash": "45d2b94532ef2a3c",
+    "hash": "cfb7eb97a2582ced",
     "score": 2220,
     "moves": 12,
     "phase": "base"
    },
    {
     "label": "KeyC",
-    "hash": "c9d5f5cf43dd0367",
+    "hash": "13383a498b09a67a",
     "score": 2220,
     "moves": 12,
     "phase": "base"
    },
    {
     "label": "KeyV",
-    "hash": "159e3cb2d75d06e6",
+    "hash": "432c1d8f1b4a8a41",
     "score": 2220,
     "moves": 12,
     "phase": "base"
    },
    {
     "label": "KeyD",
-    "hash": "c18330325a5551ec",
+    "hash": "83c638a97fcfdd93",
     "score": 0,
     "moves": 20,
     "phase": "idle"
    },
    {
     "label": "turn 1",
-    "hash": "24507dc40ffa875f",
+    "hash": "c73d665c0a31ff3f",
     "score": 328,
     "moves": 19,
     "phase": "idle"
    },
    {
     "label": "turn 2",
-    "hash": "79368e885fd44b8f",
+    "hash": "b03f4d609c165890",
     "score": 412,
     "moves": 18,
     "phase": "idle"
    },
    {
     "label": "final",
-    "hash": "40261291775b7910",
+    "hash": "fc351d2d48b32502",
     "score": 412,
     "moves": 18,
     "phase": "base"
@@ -1988,46 +1988,46 @@
  },
  "uiText": {
   "ticks": 287,
-  "chain": "3a6ba559b2b6dba1",
+  "chain": "ddb30d24f86f67a3",
   "checkpoints": [
    {
     "label": "boot",
-    "hash": "f704472b16908dcf",
+    "hash": "2fc1a20eb736b132",
     "score": 0,
     "moves": 20,
     "phase": "base"
    },
    {
     "label": "turn 1",
-    "hash": "6f5149e943260e38",
+    "hash": "19984cb74dc88964",
     "score": 1400,
     "moves": 19,
     "phase": "idle"
    },
    {
     "label": "turn 2",
-    "hash": "2c17b1c255e2924d",
+    "hash": "38f94515b8a047e5",
     "score": 1598,
     "moves": 18,
     "phase": "idle"
    },
    {
     "label": "turn 3",
-    "hash": "8f72707465751acc",
+    "hash": "acad8be35de26b7f",
     "score": 1736,
     "moves": 17,
     "phase": "idle"
    },
    {
     "label": "camp",
-    "hash": "e8b391d09ce0b93a",
+    "hash": "8bbf3210fe22e15e",
     "score": 1736,
     "moves": 17,
     "phase": "base"
    },
    {
     "label": "final",
-    "hash": "e8b391d09ce0b93a",
+    "hash": "8bbf3210fe22e15e",
     "score": 1736,
     "moves": 17,
     "phase": "base"
