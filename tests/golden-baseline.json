@@ -1,0 +1,2127 @@
+{
+ "daily": {
+  "ticks": 1231,
+  "chain": "5bac534ac446dea6",
+  "checkpoints": [
+   {
+    "label": "boot",
+    "hash": "43fdffc9e46537a0",
+    "score": 0,
+    "moves": 20,
+    "phase": "base"
+   },
+   {
+    "label": "start",
+    "hash": "96633a4a62604ed5",
+    "score": 0,
+    "moves": 20,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 1",
+    "hash": "d47431bbdb6ec508",
+    "score": 1400,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 2",
+    "hash": "4990a48c18776c01",
+    "score": 1598,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 3",
+    "hash": "9dca28f8a064daf2",
+    "score": 1736,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 4",
+    "hash": "ec70ec747c4776cf",
+    "score": 1802,
+    "moves": 16,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 5",
+    "hash": "8c3b0f4e900a2180",
+    "score": 1950,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 6",
+    "hash": "62ac11b189698f8b",
+    "score": 2046,
+    "moves": 14,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 7",
+    "hash": "ad06b6d1dffeddcc",
+    "score": 2178,
+    "moves": 13,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 8",
+    "hash": "bb157bd756a522c7",
+    "score": 2220,
+    "moves": 12,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 9",
+    "hash": "b8caae75da2b658a",
+    "score": 2466,
+    "moves": 11,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 10",
+    "hash": "189ce1a345396dcf",
+    "score": 2538,
+    "moves": 10,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 11",
+    "hash": "463a9a49f3c82dae",
+    "score": 2838,
+    "moves": 9,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 12",
+    "hash": "ef3735782d4fed5a",
+    "score": 2880,
+    "moves": 11,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 13",
+    "hash": "008ac890368eb9d1",
+    "score": 3042,
+    "moves": 10,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 14",
+    "hash": "75189b763ca64a00",
+    "score": 3096,
+    "moves": 9,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 15",
+    "hash": "efb85b3de3533633",
+    "score": 3678,
+    "moves": 8,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 16",
+    "hash": "ba9dca2861af5291",
+    "score": 3732,
+    "moves": 7,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 17",
+    "hash": "c459ab53cea45027",
+    "score": 3780,
+    "moves": 6,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 18",
+    "hash": "d3dbc709e64bbd6d",
+    "score": 3820,
+    "moves": 5,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 19",
+    "hash": "e8c0e373398cd92e",
+    "score": 4196,
+    "moves": 4,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 20",
+    "hash": "b57dce3665c34c52",
+    "score": 4292,
+    "moves": 3,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 21",
+    "hash": "62794ef3180fdc21",
+    "score": 4562,
+    "moves": 2,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 22",
+    "hash": "c919d15dfe8e1e00",
+    "score": 4832,
+    "moves": 1,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 23",
+    "hash": "59dc3f03090559ce",
+    "score": 4874,
+    "moves": 0,
+    "phase": "base"
+   },
+   {
+    "label": "end",
+    "hash": "59dc3f03090559ce",
+    "score": 4874,
+    "moves": 0,
+    "phase": "base"
+   },
+   {
+    "label": "final",
+    "hash": "59dc3f03090559ce",
+    "score": 4874,
+    "moves": 0,
+    "phase": "base"
+   }
+  ]
+ },
+ "dailyOtherCode": {
+  "ticks": 747,
+  "chain": "0446933aed480e41",
+  "checkpoints": [
+   {
+    "label": "boot",
+    "hash": "43fdffc9e46537a0",
+    "score": 0,
+    "moves": 20,
+    "phase": "base"
+   },
+   {
+    "label": "turn 1",
+    "hash": "4b7c1d74f423a3ed",
+    "score": 306,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 2",
+    "hash": "3c2c4197bfc6097d",
+    "score": 336,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 3",
+    "hash": "31c1815ae23f648d",
+    "score": 634,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 4",
+    "hash": "691f65ac1f5b8aba",
+    "score": 730,
+    "moves": 16,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 5",
+    "hash": "dbd9df2a2b328a94",
+    "score": 784,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 6",
+    "hash": "222d3158d627f52b",
+    "score": 1638,
+    "moves": 14,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 7",
+    "hash": "e3093e229ddd30be",
+    "score": 1686,
+    "moves": 13,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 8",
+    "hash": "4dd6b2844b2636e0",
+    "score": 2074,
+    "moves": 12,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 9",
+    "hash": "e4d46d815a615a51",
+    "score": 2110,
+    "moves": 11,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 10",
+    "hash": "d00435d47b968944",
+    "score": 2350,
+    "moves": 10,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 11",
+    "hash": "05fb89fbd0ae84ab",
+    "score": 2446,
+    "moves": 9,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 12",
+    "hash": "7365c53659858902",
+    "score": 2500,
+    "moves": 11,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 13",
+    "hash": "b2ab9770aabb3619",
+    "score": 2614,
+    "moves": 10,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 14",
+    "hash": "2a6bf7af2054f146",
+    "score": 2668,
+    "moves": 9,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 15",
+    "hash": "e7f01a879406801d",
+    "score": 2698,
+    "moves": 8,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 16",
+    "hash": "7d09b37fcaf202c4",
+    "score": 3052,
+    "moves": 7,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 17",
+    "hash": "a2a25915d01e974d",
+    "score": 3094,
+    "moves": 6,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 18",
+    "hash": "e2c0504206fe3851",
+    "score": 3148,
+    "moves": 5,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 19",
+    "hash": "09874824da74e9fe",
+    "score": 3388,
+    "moves": 4,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 20",
+    "hash": "0b7ace6004c5f18c",
+    "score": 3424,
+    "moves": 3,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 21",
+    "hash": "f28c8e2ad0093e20",
+    "score": 3662,
+    "moves": 2,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 22",
+    "hash": "aa1aa1605e631fa0",
+    "score": 3704,
+    "moves": 1,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 23",
+    "hash": "13b217d1a2805127",
+    "score": 3752,
+    "moves": 0,
+    "phase": "base"
+   },
+   {
+    "label": "end",
+    "hash": "13b217d1a2805127",
+    "score": 3752,
+    "moves": 0,
+    "phase": "base"
+   },
+   {
+    "label": "final",
+    "hash": "13b217d1a2805127",
+    "score": 3752,
+    "moves": 0,
+    "phase": "base"
+   }
+  ]
+ },
+ "dailyReducedMotion": {
+  "ticks": 96,
+  "chain": "cb1a09faedcca234",
+  "checkpoints": [
+   {
+    "label": "boot",
+    "hash": "43fdffc9e46537a0",
+    "score": 0,
+    "moves": 20,
+    "phase": "base"
+   },
+   {
+    "label": "turn 1",
+    "hash": "57578c06008d82fd",
+    "score": 1400,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 2",
+    "hash": "8f03534b130f3ea7",
+    "score": 1598,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 3",
+    "hash": "b45da0cbcd68da94",
+    "score": 1736,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 4",
+    "hash": "211398815978fe6e",
+    "score": 1802,
+    "moves": 16,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 5",
+    "hash": "30e8729e3e9dcbce",
+    "score": 1950,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 6",
+    "hash": "4d0f24d3187cec0c",
+    "score": 2046,
+    "moves": 14,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 7",
+    "hash": "4c68dc65349a4e60",
+    "score": 2178,
+    "moves": 13,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 8",
+    "hash": "668e198f87bf52d6",
+    "score": 2220,
+    "moves": 12,
+    "phase": "idle"
+   },
+   {
+    "label": "end",
+    "hash": "668e198f87bf52d6",
+    "score": 2220,
+    "moves": 12,
+    "phase": "idle"
+   },
+   {
+    "label": "final",
+    "hash": "668e198f87bf52d6",
+    "score": 2220,
+    "moves": 12,
+    "phase": "idle"
+   }
+  ]
+ },
+ "campaign": {
+  "ticks": 4418,
+  "chain": "b11c75284196bd1e",
+  "checkpoints": [
+   {
+    "label": "boot",
+    "hash": "43fdffc9e46537a0",
+    "score": 0,
+    "moves": 20,
+    "phase": "base"
+   },
+   {
+    "label": "rich",
+    "hash": "2cbade3a384da6ff",
+    "score": 0,
+    "moves": 20,
+    "phase": "base"
+   },
+   {
+    "label": "shop",
+    "hash": "8dec71d5efa19d42",
+    "score": 0,
+    "moves": 20,
+    "phase": "base"
+   },
+   {
+    "label": "contract 0",
+    "hash": "f2dfe2e008001fce",
+    "score": 0,
+    "moves": 22,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 1",
+    "hash": "91367e75d851c2f4",
+    "score": 82,
+    "moves": 26,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 2",
+    "hash": "52f5f3f70a9d3011",
+    "score": 792,
+    "moves": 25,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 3",
+    "hash": "87d32e262de74c0c",
+    "score": 1158,
+    "moves": 24,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 4",
+    "hash": "f8c3b4e7c2c7c4d2",
+    "score": 1254,
+    "moves": 23,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 5",
+    "hash": "5dfe8c9e3bb43eae",
+    "score": 1332,
+    "moves": 22,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 6",
+    "hash": "dc46f4ef4e4daf03",
+    "score": 1380,
+    "moves": 21,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 7",
+    "hash": "e19497f116c73b3d",
+    "score": 1434,
+    "moves": 20,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 8",
+    "hash": "eef8d2e49d563c6b",
+    "score": 1476,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 9",
+    "hash": "67c9558d0788f215",
+    "score": 2130,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 10",
+    "hash": "6feaaa8f48d3dd20",
+    "score": 2166,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 11",
+    "hash": "2414174f8143c038",
+    "score": 2220,
+    "moves": 16,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 12",
+    "hash": "7ccd8cd39a7c96ad",
+    "score": 2250,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 13",
+    "hash": "6e9443d8e2cc874e",
+    "score": 2304,
+    "moves": 14,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 14",
+    "hash": "9eb74c3db733ac5c",
+    "score": 2460,
+    "moves": 13,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 15",
+    "hash": "de96b7d99bf01e11",
+    "score": 2556,
+    "moves": 12,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 16",
+    "hash": "0de5ae65b900264c",
+    "score": 2604,
+    "moves": 11,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 17",
+    "hash": "594398c903fc2eec",
+    "score": 2760,
+    "moves": 10,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 18",
+    "hash": "748c87395e0df00a",
+    "score": 3100,
+    "moves": 9,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 19",
+    "hash": "4f0bb3882c0e1ffc",
+    "score": 3124,
+    "moves": 8,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 20",
+    "hash": "f6f391224c390e30",
+    "score": 3178,
+    "moves": 7,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 21",
+    "hash": "a038c9a9f38c4dc2",
+    "score": 3208,
+    "moves": 6,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 22",
+    "hash": "61cb434348132155",
+    "score": 3244,
+    "moves": 5,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 23",
+    "hash": "acebec4ba271a030",
+    "score": 3382,
+    "moves": 4,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 24",
+    "hash": "814722bd8d813b63",
+    "score": 3436,
+    "moves": 3,
+    "phase": "idle"
+   },
+   {
+    "label": "after 0",
+    "hash": "814722bd8d813b63",
+    "score": 3436,
+    "moves": 3,
+    "phase": "idle"
+   },
+   {
+    "label": "camp 0",
+    "hash": "05a2fed6eac261d8",
+    "score": 3436,
+    "moves": 3,
+    "phase": "base"
+   },
+   {
+    "label": "contract 1",
+    "hash": "01b90ecd6993e008",
+    "score": 0,
+    "moves": 22,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 1",
+    "hash": "507997847b0df05b",
+    "score": 716,
+    "moves": 26,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 2",
+    "hash": "8a16107dddc07ee9",
+    "score": 770,
+    "moves": 25,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 3",
+    "hash": "e98f7e414d554c0d",
+    "score": 932,
+    "moves": 24,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 4",
+    "hash": "c09feb8a87f94d82",
+    "score": 1010,
+    "moves": 23,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 5",
+    "hash": "fb677190ba38b8b4",
+    "score": 1084,
+    "moves": 22,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 6",
+    "hash": "8ec25bafe32a2c78",
+    "score": 1132,
+    "moves": 21,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 7",
+    "hash": "17fd4b048bf911d1",
+    "score": 1156,
+    "moves": 20,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 8",
+    "hash": "c446dab7bdab1226",
+    "score": 1210,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 9",
+    "hash": "30e663fae9530fc1",
+    "score": 1246,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 10",
+    "hash": "45dbac00c4760f53",
+    "score": 1354,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 11",
+    "hash": "9a083698332430fe",
+    "score": 1384,
+    "moves": 16,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 12",
+    "hash": "663fcd0287890568",
+    "score": 1414,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 13",
+    "hash": "457539d22e7bcab0",
+    "score": 1534,
+    "moves": 14,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 14",
+    "hash": "90ba8dc56f318737",
+    "score": 1570,
+    "moves": 13,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 15",
+    "hash": "9227c21f7cffe9a7",
+    "score": 1600,
+    "moves": 12,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 16",
+    "hash": "adeb144b7d98ab7e",
+    "score": 1726,
+    "moves": 11,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 17",
+    "hash": "13d96c2a2d4af385",
+    "score": 1750,
+    "moves": 10,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 18",
+    "hash": "b8e052a7ef5a3919",
+    "score": 1804,
+    "moves": 9,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 19",
+    "hash": "4457299fd5257a13",
+    "score": 1852,
+    "moves": 8,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 20",
+    "hash": "e2d8a44d7be38c95",
+    "score": 1876,
+    "moves": 7,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 21",
+    "hash": "92db17ec0a2409b4",
+    "score": 1984,
+    "moves": 6,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 22",
+    "hash": "9e09b386f968fd72",
+    "score": 2020,
+    "moves": 5,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 23",
+    "hash": "660e0c69112c9376",
+    "score": 2074,
+    "moves": 4,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 24",
+    "hash": "6ddd5467de6f28dd",
+    "score": 2200,
+    "moves": 3,
+    "phase": "idle"
+   },
+   {
+    "label": "after 1",
+    "hash": "6ddd5467de6f28dd",
+    "score": 2200,
+    "moves": 3,
+    "phase": "idle"
+   },
+   {
+    "label": "camp 1",
+    "hash": "7e05489189ac59fb",
+    "score": 2200,
+    "moves": 3,
+    "phase": "base"
+   },
+   {
+    "label": "contract 2",
+    "hash": "33733a219e1ee585",
+    "score": 0,
+    "moves": 22,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 1",
+    "hash": "75bed7d15050bc41",
+    "score": 766,
+    "moves": 21,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 2",
+    "hash": "f86c4fec4c65d7cb",
+    "score": 820,
+    "moves": 20,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 3",
+    "hash": "35cf476553268a1e",
+    "score": 874,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 4",
+    "hash": "0c2ce88b2896b099",
+    "score": 904,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 5",
+    "hash": "6d84466ac885258e",
+    "score": 934,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 6",
+    "hash": "09fd84af66a590ff",
+    "score": 1508,
+    "moves": 16,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 7",
+    "hash": "b645dc89579fd327",
+    "score": 1556,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 8",
+    "hash": "7b9d27f972709f5f",
+    "score": 1610,
+    "moves": 14,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 9",
+    "hash": "f8a75fd442e4df22",
+    "score": 1670,
+    "moves": 13,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 10",
+    "hash": "d4b4d47824980a8e",
+    "score": 2202,
+    "moves": 12,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 11",
+    "hash": "50c0cc8d647c129d",
+    "score": 2232,
+    "moves": 11,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 12",
+    "hash": "aaee849b9c257a3b",
+    "score": 2286,
+    "moves": 10,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 13",
+    "hash": "d46036357aeff083",
+    "score": 2394,
+    "moves": 9,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 14",
+    "hash": "04348f3d41cc4585",
+    "score": 2442,
+    "moves": 8,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 15",
+    "hash": "5c64af24b73a266c",
+    "score": 2932,
+    "moves": 7,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 16",
+    "hash": "2782c2c3f1d22776",
+    "score": 3228,
+    "moves": 6,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 17",
+    "hash": "f05945f31ea09c63",
+    "score": 3260,
+    "moves": 5,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 18",
+    "hash": "22cbec27164ffa55",
+    "score": 3296,
+    "moves": 4,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 19",
+    "hash": "a4ee250c573d3214",
+    "score": 3386,
+    "moves": 3,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 20",
+    "hash": "e27ccfbd48706a7a",
+    "score": 3640,
+    "moves": 7,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 21",
+    "hash": "7c201387e6f91c0d",
+    "score": 3676,
+    "moves": 6,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 22",
+    "hash": "e3c3d3a1e7e88486",
+    "score": 3724,
+    "moves": 5,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 23",
+    "hash": "e572db092bf44b65",
+    "score": 3808,
+    "moves": 4,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 24",
+    "hash": "a0a6b430dc92cef3",
+    "score": 3910,
+    "moves": 3,
+    "phase": "idle"
+   },
+   {
+    "label": "after 2",
+    "hash": "a0a6b430dc92cef3",
+    "score": 3910,
+    "moves": 3,
+    "phase": "idle"
+   },
+   {
+    "label": "camp 2",
+    "hash": "006dbd5a22726b58",
+    "score": 3910,
+    "moves": 3,
+    "phase": "base"
+   },
+   {
+    "label": "contract 3",
+    "hash": "84be5a5dfb10b3f9",
+    "score": 0,
+    "moves": 22,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 1",
+    "hash": "b5b71c2d6a3521b7",
+    "score": 286,
+    "moves": 21,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 2",
+    "hash": "52e8f87e65d86d58",
+    "score": 542,
+    "moves": 20,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 3",
+    "hash": "9afabf44870e5ac1",
+    "score": 578,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 4",
+    "hash": "cb26ebb66065790e",
+    "score": 602,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 5",
+    "hash": "206e48b3521992a4",
+    "score": 656,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 6",
+    "hash": "983610675ac43a52",
+    "score": 686,
+    "moves": 22,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 7",
+    "hash": "08d1788fec0c30b3",
+    "score": 710,
+    "moves": 21,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 8",
+    "hash": "80226d45443e38d6",
+    "score": 764,
+    "moves": 20,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 9",
+    "hash": "889b8bfe31339d4a",
+    "score": 788,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 10",
+    "hash": "36ba72740f08d08e",
+    "score": 1070,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 11",
+    "hash": "df18b93fb23e11e2",
+    "score": 1210,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 12",
+    "hash": "3b90598589a87680",
+    "score": 1240,
+    "moves": 16,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 13",
+    "hash": "d33c0467bda60316",
+    "score": 1276,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 14",
+    "hash": "102d25463ec83395",
+    "score": 1300,
+    "moves": 14,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 15",
+    "hash": "cf266f0dddbda5ac",
+    "score": 1330,
+    "moves": 13,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 16",
+    "hash": "1fe5d5e279dbf192",
+    "score": 1384,
+    "moves": 12,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 17",
+    "hash": "8c91afd348063139",
+    "score": 1432,
+    "moves": 11,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 18",
+    "hash": "233309f6119763d1",
+    "score": 1462,
+    "moves": 10,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 19",
+    "hash": "357da60968944b5c",
+    "score": 1510,
+    "moves": 9,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 20",
+    "hash": "dcc49b7feb2906e5",
+    "score": 1534,
+    "moves": 8,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 21",
+    "hash": "af140692c9324617",
+    "score": 1582,
+    "moves": 7,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 22",
+    "hash": "0cf8519d02d00ff9",
+    "score": 1636,
+    "moves": 6,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 23",
+    "hash": "2fce1f37f8f5cb74",
+    "score": 1768,
+    "moves": 5,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 24",
+    "hash": "a3bbe803cc942738",
+    "score": 1822,
+    "moves": 4,
+    "phase": "idle"
+   },
+   {
+    "label": "after 3",
+    "hash": "a3bbe803cc942738",
+    "score": 1822,
+    "moves": 4,
+    "phase": "idle"
+   },
+   {
+    "label": "camp 3",
+    "hash": "3552a2de6585106d",
+    "score": 1822,
+    "moves": 4,
+    "phase": "base"
+   },
+   {
+    "label": "final",
+    "hash": "3552a2de6585106d",
+    "score": 1822,
+    "moves": 4,
+    "phase": "base"
+   }
+  ]
+ },
+ "failure": {
+  "ticks": 958,
+  "chain": "d4373efdb25eb286",
+  "checkpoints": [
+   {
+    "label": "boot",
+    "hash": "43fdffc9e46537a0",
+    "score": 0,
+    "moves": 20,
+    "phase": "base"
+   },
+   {
+    "label": "turn 1",
+    "hash": "20ed3cf42166e212",
+    "score": 298,
+    "moves": 24,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 2",
+    "hash": "537f675af2cc9925",
+    "score": 600,
+    "moves": 23,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 3",
+    "hash": "489aedd10952fabf",
+    "score": 624,
+    "moves": 22,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 4",
+    "hash": "61ff2780c568af4e",
+    "score": 672,
+    "moves": 21,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 5",
+    "hash": "13789e635c9552cb",
+    "score": 720,
+    "moves": 20,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 6",
+    "hash": "c106eb5685dd2d45",
+    "score": 1054,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 7",
+    "hash": "86c6d6a9c674f8b0",
+    "score": 1084,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 8",
+    "hash": "ec270675134fb769",
+    "score": 1138,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 9",
+    "hash": "f64d58ac159e4aed",
+    "score": 1186,
+    "moves": 16,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 10",
+    "hash": "2691029072a59964",
+    "score": 1216,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 11",
+    "hash": "360b0bdb052a0bbc",
+    "score": 1240,
+    "moves": 14,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 12",
+    "hash": "6ab2d14d0b630d35",
+    "score": 1366,
+    "moves": 13,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 13",
+    "hash": "10ac05e4f9eda58e",
+    "score": 1396,
+    "moves": 12,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 14",
+    "hash": "cc29c18433df32cc",
+    "score": 1420,
+    "moves": 11,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 15",
+    "hash": "c9aa02f3a6807d46",
+    "score": 1456,
+    "moves": 10,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 16",
+    "hash": "57e79e6e0067bffc",
+    "score": 1504,
+    "moves": 9,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 17",
+    "hash": "c43aec9dd848492b",
+    "score": 1528,
+    "moves": 8,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 18",
+    "hash": "335de0ef33768e96",
+    "score": 1582,
+    "moves": 7,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 19",
+    "hash": "55c6e8ac4d3f5132",
+    "score": 1636,
+    "moves": 6,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 20",
+    "hash": "8ac39204496a5dee",
+    "score": 1672,
+    "moves": 5,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 21",
+    "hash": "587d0bdc93aeeaa0",
+    "score": 1702,
+    "moves": 4,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 22",
+    "hash": "c8b53db7fd2c3b40",
+    "score": 1750,
+    "moves": 3,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 23",
+    "hash": "45c5615d42dbb6c6",
+    "score": 1804,
+    "moves": 2,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 24",
+    "hash": "ec1890c1d80a8169",
+    "score": 1852,
+    "moves": 1,
+    "phase": "idle"
+   },
+   {
+    "label": "failed",
+    "hash": "0ec73a82478eabc8",
+    "score": 1852,
+    "moves": 0,
+    "phase": "idle"
+   },
+   {
+    "label": "settled",
+    "hash": "f82ed5c0423f1cea",
+    "score": 1852,
+    "moves": 0,
+    "phase": "base"
+   },
+   {
+    "label": "abort",
+    "hash": "feec0dc35df99a7a",
+    "score": 0,
+    "moves": 22,
+    "phase": "base"
+   },
+   {
+    "label": "final",
+    "hash": "feec0dc35df99a7a",
+    "score": 0,
+    "moves": 22,
+    "phase": "base"
+   }
+  ]
+ },
+ "keyboard": {
+  "ticks": 597,
+  "chain": "e3b65720e1d6a743",
+  "checkpoints": [
+   {
+    "label": "boot",
+    "hash": "f704472b16908dcf",
+    "score": 0,
+    "moves": 20,
+    "phase": "base"
+   },
+   {
+    "label": "picked",
+    "hash": "bd9cf3faef5c5083",
+    "score": 0,
+    "moves": 20,
+    "phase": "idle"
+   },
+   {
+    "label": "esc",
+    "hash": "0fb26e4ff61a7afb",
+    "score": 0,
+    "moves": 20,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 0",
+    "hash": "bf3c56b1cb4bd2f8",
+    "score": 1400,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "picked",
+    "hash": "3b3ee9129dbd8075",
+    "score": 1400,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "esc",
+    "hash": "706d4548e7060a9a",
+    "score": 1400,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 1",
+    "hash": "b7d5dee51545d310",
+    "score": 1598,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "picked",
+    "hash": "0d9c490d2821ddd0",
+    "score": 1598,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "esc",
+    "hash": "4c3c16739997e8b2",
+    "score": 1598,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 2",
+    "hash": "6a636a0c566a59e8",
+    "score": 1736,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "picked",
+    "hash": "b8f168fedb9a396f",
+    "score": 1736,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "esc",
+    "hash": "76ea8dc7419ee758",
+    "score": 1736,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 3",
+    "hash": "9685444df325ddd6",
+    "score": 1802,
+    "moves": 16,
+    "phase": "idle"
+   },
+   {
+    "label": "picked",
+    "hash": "2d63c3275759bf8d",
+    "score": 1802,
+    "moves": 16,
+    "phase": "idle"
+   },
+   {
+    "label": "esc",
+    "hash": "96d99ac25fa38b01",
+    "score": 1802,
+    "moves": 16,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 4",
+    "hash": "fdf202389b66c41b",
+    "score": 1950,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "picked",
+    "hash": "f553bd2adb800d10",
+    "score": 1950,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "esc",
+    "hash": "ceb99287049fc18b",
+    "score": 1950,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 5",
+    "hash": "744568920a017125",
+    "score": 2046,
+    "moves": 14,
+    "phase": "idle"
+   },
+   {
+    "label": "muted",
+    "hash": "99c1bafe19f107a6",
+    "score": 2046,
+    "moves": 14,
+    "phase": "idle"
+   },
+   {
+    "label": "abort",
+    "hash": "d6bb4ad74c49a2f1",
+    "score": 2046,
+    "moves": 14,
+    "phase": "idle"
+   },
+   {
+    "label": "Digit1",
+    "hash": "d6bb4ad74c49a2f1",
+    "score": 2046,
+    "moves": 14,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 1",
+    "hash": "e95c86fccb6b195e",
+    "score": 2178,
+    "moves": 13,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 2",
+    "hash": "7bff0dafdadb6b18",
+    "score": 2220,
+    "moves": 12,
+    "phase": "idle"
+   },
+   {
+    "label": "Digit2",
+    "hash": "23a0accc44dfcd72",
+    "score": 2220,
+    "moves": 12,
+    "phase": "base"
+   },
+   {
+    "label": "KeyQ",
+    "hash": "45d2b94532ef2a3c",
+    "score": 2220,
+    "moves": 12,
+    "phase": "base"
+   },
+   {
+    "label": "KeyW",
+    "hash": "45d2b94532ef2a3c",
+    "score": 2220,
+    "moves": 12,
+    "phase": "base"
+   },
+   {
+    "label": "KeyC",
+    "hash": "c9d5f5cf43dd0367",
+    "score": 2220,
+    "moves": 12,
+    "phase": "base"
+   },
+   {
+    "label": "KeyV",
+    "hash": "159e3cb2d75d06e6",
+    "score": 2220,
+    "moves": 12,
+    "phase": "base"
+   },
+   {
+    "label": "KeyD",
+    "hash": "c18330325a5551ec",
+    "score": 0,
+    "moves": 20,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 1",
+    "hash": "24507dc40ffa875f",
+    "score": 328,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 2",
+    "hash": "79368e885fd44b8f",
+    "score": 412,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "final",
+    "hash": "40261291775b7910",
+    "score": 412,
+    "moves": 18,
+    "phase": "base"
+   }
+  ]
+ },
+ "pointer": {
+  "ticks": 499,
+  "chain": "27ff1f3f11f89ade",
+  "checkpoints": [
+   {
+    "label": "boot",
+    "hash": "43fdffc9e46537a0",
+    "score": 0,
+    "moves": 20,
+    "phase": "base"
+   },
+   {
+    "label": "sel",
+    "hash": "ad00d61cf3150f5f",
+    "score": 0,
+    "moves": 20,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 0",
+    "hash": "d47431bbdb6ec508",
+    "score": 1400,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "sel",
+    "hash": "d22dd622d0e7081d",
+    "score": 1400,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 1",
+    "hash": "4990a48c18776c01",
+    "score": 1598,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "sel",
+    "hash": "6fd5da37ae18a940",
+    "score": 1598,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 2",
+    "hash": "9dca28f8a064daf2",
+    "score": 1736,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "sel",
+    "hash": "552d4ae27b680f53",
+    "score": 1736,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 3",
+    "hash": "ec70ec747c4776cf",
+    "score": 1802,
+    "moves": 16,
+    "phase": "idle"
+   },
+   {
+    "label": "sel",
+    "hash": "b7e75230a8ef1418",
+    "score": 1802,
+    "moves": 16,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 4",
+    "hash": "8c3b0f4e900a2180",
+    "score": 1950,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "mute",
+    "hash": "53fe14c762bc5edb",
+    "score": 1950,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "toBase",
+    "hash": "1189285f4aa40996",
+    "score": 1950,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "base click 560,420",
+    "hash": "cbdcd76964145ba6",
+    "score": 1950,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 1",
+    "hash": "e9ebada69d2579e9",
+    "score": 2046,
+    "moves": 14,
+    "phase": "idle"
+   },
+   {
+    "label": "base click 560,490",
+    "hash": "a82d746447aaac00",
+    "score": 2046,
+    "moves": 14,
+    "phase": "base"
+   },
+   {
+    "label": "base click 100,1000",
+    "hash": "24ff4395cf84d3c4",
+    "score": 0,
+    "moves": 22,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 1",
+    "hash": "43c9c74dc3da35e6",
+    "score": 24,
+    "moves": 21,
+    "phase": "idle"
+   },
+   {
+    "label": "base click 100,1100",
+    "hash": "b802d3c90be6bcff",
+    "score": 0,
+    "moves": 20,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 1",
+    "hash": "06921476ce4d8cc0",
+    "score": 328,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "base click 100,1170",
+    "hash": "5f11597c70e86b35",
+    "score": 328,
+    "moves": 19,
+    "phase": "base"
+   },
+   {
+    "label": "base click 500,1170",
+    "hash": "ab53545dab0031a2",
+    "score": 328,
+    "moves": 19,
+    "phase": "base"
+   },
+   {
+    "label": "base click 560,580",
+    "hash": "39c4f862ab6a4fd6",
+    "score": 328,
+    "moves": 19,
+    "phase": "base"
+   },
+   {
+    "label": "base click 560,650",
+    "hash": "c469595f18301a3d",
+    "score": 328,
+    "moves": 19,
+    "phase": "base"
+   },
+   {
+    "label": "final",
+    "hash": "c469595f18301a3d",
+    "score": 328,
+    "moves": 19,
+    "phase": "base"
+   }
+  ]
+ },
+ "classic": {
+  "ticks": 595,
+  "chain": "fd5ac07883533c4f",
+  "checkpoints": [
+   {
+    "label": "boot",
+    "hash": "9554090f8e59c4d3",
+    "score": 0,
+    "moves": 22,
+    "phase": "idle"
+   },
+   {
+    "label": "start",
+    "hash": "da52afb3f5e9fcd9",
+    "score": 0,
+    "moves": 22,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 1",
+    "hash": "35ade28d113a5bee",
+    "score": 298,
+    "moves": 21,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 2",
+    "hash": "c5613abfb62664cb",
+    "score": 994,
+    "moves": 23,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 3",
+    "hash": "f2f916ef568cf6cf",
+    "score": 1048,
+    "moves": 22,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 4",
+    "hash": "c2c62841ca6d3f55",
+    "score": 1358,
+    "moves": 21,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 5",
+    "hash": "8bcfda9cd549e3d2",
+    "score": 1484,
+    "moves": 20,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 6",
+    "hash": "5571627a363a08de",
+    "score": 1520,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 7",
+    "hash": "b257e07527789e55",
+    "score": 1692,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 8",
+    "hash": "ab9aa843cdc78bad",
+    "score": 1878,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 9",
+    "hash": "b2e72874504e3d49",
+    "score": 2052,
+    "moves": 16,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 10",
+    "hash": "d85d8703368abfec",
+    "score": 2124,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "end",
+    "hash": "d85d8703368abfec",
+    "score": 2124,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "final",
+    "hash": "d85d8703368abfec",
+    "score": 2124,
+    "moves": 15,
+    "phase": "idle"
+   }
+  ]
+ },
+ "uiText": {
+  "ticks": 287,
+  "chain": "3a6ba559b2b6dba1",
+  "checkpoints": [
+   {
+    "label": "boot",
+    "hash": "f704472b16908dcf",
+    "score": 0,
+    "moves": 20,
+    "phase": "base"
+   },
+   {
+    "label": "turn 1",
+    "hash": "6f5149e943260e38",
+    "score": 1400,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 2",
+    "hash": "2c17b1c255e2924d",
+    "score": 1598,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 3",
+    "hash": "8f72707465751acc",
+    "score": 1736,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "camp",
+    "hash": "e8b391d09ce0b93a",
+    "score": 1736,
+    "moves": 17,
+    "phase": "base"
+   },
+   {
+    "label": "final",
+    "hash": "e8b391d09ce0b93a",
+    "score": 1736,
+    "moves": 17,
+    "phase": "base"
+   }
+  ]
+ },
+ "variableDt": {
+  "ticks": 344,
+  "chain": "b90b1e605533d8d0",
+  "checkpoints": [
+   {
+    "label": "boot",
+    "hash": "43fdffc9e46537a0",
+    "score": 0,
+    "moves": 20,
+    "phase": "base"
+   },
+   {
+    "label": "turn 0",
+    "hash": "df238458b567ff70",
+    "score": 1400,
+    "moves": 19,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 1",
+    "hash": "0da64136df855b35",
+    "score": 1598,
+    "moves": 18,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 2",
+    "hash": "28d05f54e4bf824d",
+    "score": 1736,
+    "moves": 17,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 3",
+    "hash": "d5dab87334d86e66",
+    "score": 1802,
+    "moves": 16,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 4",
+    "hash": "66176c60f9f568fd",
+    "score": 1950,
+    "moves": 15,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 5",
+    "hash": "a1db8fe4f91e59b6",
+    "score": 2046,
+    "moves": 14,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 6",
+    "hash": "af34d2920ae2e449",
+    "score": 2178,
+    "moves": 13,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 7",
+    "hash": "87d5b68156aebdfb",
+    "score": 2220,
+    "moves": 12,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 8",
+    "hash": "58329fb14b64e13f",
+    "score": 2466,
+    "moves": 11,
+    "phase": "idle"
+   },
+   {
+    "label": "turn 9",
+    "hash": "2c39ce179ac17712",
+    "score": 2538,
+    "moves": 10,
+    "phase": "idle"
+   },
+   {
+    "label": "final",
+    "hash": "2c39ce179ac17712",
+    "score": 2538,
+    "moves": 10,
+    "phase": "idle"
+   }
+  ]
+ }
+}
