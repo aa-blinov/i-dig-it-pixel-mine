@@ -9,7 +9,7 @@ description: Основной цикл любой задачи в Pixel Mine —
 
 ## Цикл
 
-1. **Понять.** Найти механику в `docs/gdd/mechanics.md`, код в `scripts/pixel-mine/`. Если задача — новая фича, сначала `/speckit-specify`, потом `/speckit-plan` и `/speckit-tasks`.
+1. **Понять.** Найти механику в `docs/gdd/mechanics.md`, код в `scripts/pixel-mine/`. Новая задача: сначала `docs/research/` (решалась ли раньше), находка записывается туда же по шаблону из `docs/research/README.md`. Если задача — новая фича, сначала `/speckit-specify`, потом `/speckit-plan` и `/speckit-tasks`.
 2. **Тест.** Изменение правила: сначала проверка в `tests/test-engine.mjs` или `tests/test-campaign.mjs`, она должна упасть. Изменение экрана: описать, что игрок должен увидеть, в `docs/ux/ux-map.md`.
 3. **Изменить.** Правило в `model/`, связка с Construct в `game/`, экран в `ui/`, числа в `config.js`. Новое поле профиля получает значение по умолчанию в `model/profile.js`.
 4. **Проверить** (скилл `verify-build`):
