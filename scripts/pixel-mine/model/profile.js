@@ -1,5 +1,5 @@
 // The saved profile: wallet, modules and equipment. Storage is passed in by the host.
-import { CONTRACTS, MODULES, PROFILE_KEY } from "../config.js";
+import { CONTRACTS, ECONOMY, MODULES, PROFILE_KEY } from "../config.js";
 import { freshBase, sanitizeBase } from "./base.js";
 import { DEFAULT_LOADOUT, loadout } from "./abilities.js";
 import { sanitizeCollection } from "./collections.js";
@@ -13,7 +13,7 @@ export function sanitizeProfile(raw) {
   var p = freshProfile();
   if (!raw || raw.version !== 2) return p;
   function integer(value, max) { return typeof value === 'number' && isFinite(value) ? Math.max(0, Math.min(max, Math.floor(value))) : 0; }
-  p.credits = integer(raw.credits, 999999); p.completed = integer(raw.completed, CONTRACTS.length); p.attempts = integer(raw.attempts, 999999);
+  p.credits = integer(raw.credits, ECONOMY.wallet); p.completed = integer(raw.completed, CONTRACTS.length); p.attempts = integer(raw.attempts, 999999);
   Object.keys(MODULES).forEach(function (id) { p.upgrades[id] = integer(raw.upgrades && raw.upgrades[id], 2); });
   (Array.isArray(raw.equipped) ? raw.equipped : []).forEach(function (id) { if (MODULES[id] && p.upgrades[id] && p.equipped.indexOf(id) < 0 && p.equipped.length < 2) p.equipped.push(id); });
   p.collection = sanitizeCollection(raw.collection);
@@ -52,6 +52,8 @@ export function equipModule(profile, id) {
   profile.equipped.push(id); return { ok: true, message: 'Модуль установлен' };
 }
 
-export function moduleLevel(engine, id) { if (engine.mode === 'daily') return 0; if (engine.roundModules) return engine.roundModules[id] || 0; return !engine.profile || engine.profile.equipped.indexOf(id) < 0 ? 0 : engine.profile.upgrades[id]; }
+// Ship modules are retired: every level reads as zero, old saves keep their data.
+export function moduleLevel(engine, id) { return 0; }
+export function oldModuleLevel(engine, id) { if (engine.mode === 'daily') return 0; if (engine.roundModules) return engine.roundModules[id] || 0; return !engine.profile || engine.profile.equipped.indexOf(id) < 0 ? 0 : engine.profile.upgrades[id]; }
 
 export function energyBudget(engine) { var level = moduleLevel(engine, 'battery'); return level ? 4 + level : 3; }

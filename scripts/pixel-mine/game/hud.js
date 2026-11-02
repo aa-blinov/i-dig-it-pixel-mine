@@ -32,11 +32,11 @@ export function describeCell(engine, index) {
 // One or two short lines for the cockpit: what just happened or what to do next.
 export function statusLine(engine) {
   if (engine.phase === 'over') return 'Смена завершена\nДобыто ' + engine.score;
-  if (engine.phase === 'ending') return engine.quotaMet ? 'Смена сдана\nСверх нормы ' + (engine.score - engine.goal) + ' руды' : engine.mode === 'daily' ? 'Топливо закончилось\nДобыто ' + engine.score : 'Топливо закончилось\nДобыто ' + engine.score + ' из ' + engine.goal;
+  if (engine.phase === 'ending') return engine.quotaMet ? 'Смена сдана\nДобыто ' + engine.score + ' руды' : engine.mode === 'daily' ? 'Ходы закончились\nДобыто ' + engine.score : 'Ходы закончились\nДобыто ' + engine.score + ' из ' + engine.goal;
   if (engine.toast) return engine.toast;
   if (engine.selected >= 0) return describeCell(engine, engine.selected).split(', ')[0] + '\nВыбери соседнюю клетку';
   if (!engine.turns) return 'Поменяй две соседние руды\nТри в ряд уходят в добычу';
-  if (engine.quotaMet) return 'Норма есть\nКопай дальше или сдай смену';
+  if (engine.quotaMet) return 'Цель есть\nКопай дальше или сдай смену';
   // Nothing to say: the sky stays clear.
   return '';
 }

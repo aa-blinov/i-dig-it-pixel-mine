@@ -34,7 +34,7 @@ export function upgradeBuilding(engine, id) {
 
 export function collectIncome(engine) {
   var amount = collect(engine.profile, engine.host.now());
-  return done(engine, { ok: amount > 0, message: amount > 0 ? 'Забрано ' + amount + ' кр.' : 'Пока нечего забирать' });
+  return done(engine, { ok: amount > 0, message: amount > 0 ? 'Забрано ' + amount + ' руды' : 'Пока нечего забирать' });
 }
 
 // The lab: take or drop an ability, within the slots the lab gives.

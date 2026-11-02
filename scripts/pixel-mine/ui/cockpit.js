@@ -8,6 +8,7 @@ import { statusLine } from "../game/hud.js";
 import { requestLeave } from "../game/round.js";
 import { boardColours, boardSpecials } from "../game/board.js";
 import { firstMove } from "../model/grid.js";
+import { chapterOf, skylineHtml } from "./skyline.js";
 
 var HINT_IDLE_MS = 6000;
 
@@ -76,7 +77,9 @@ export function setupCockpit(engine, onMenu) {
   root.innerHTML = '<div class="ck-text ck-score" style="' + box(22, 20, 302, 72) + '"><small data-ck-title></small><b data-ck-score></b></div>'
     + '<div class="ck-actions" style="' + box(345, 20, 353, 72) + '"><div class="ck-text ck-finds" data-ck-finds></div><button class="ck-hand" data-ck-hand hidden>Сдать смену</button><button class="ck-icon ck-menu" data-ck-menu aria-label="Меню: звук, справка, прервать смену"><span></span></button></div>'
     // The needle sweeps the upper half of the dial, so the number sits in the lower half.
-    + '<div class="ck-text ck-fuel" style="' + box(63, 1166, 140, 66) + '"><b data-ck-fuel></b><small>топливо</small></div>'
+    + '<div class="ck-text ck-fuel" style="' + box(63, 1166, 140, 66) + '"><b data-ck-fuel></b><small>ходы</small></div>'
+    // The town over the mine sits behind the hint bubble in the strip of sky.
+    + '<div class="ck-sky" data-ck-sky aria-hidden="true" style="' + box(14, 112, 692, 150) + '"></div>'
     + '<div class="ck-text ck-status" role="status" data-ck-status style="' + box(40, 120, 640, 120) + '"></div>'
     + '<button class="ck-icon ck-info" data-ck-info style="' + box(196, 1022, 56, 56) + '" aria-label="Корабль: что он даёт" aria-expanded="false">i</button>'
     + HOLD_X.map(function (x, i) { return '<button class="ck-lock" data-ck-lock="' + i + '" style="' + box(x, HOLD_Y, 64, 64) + '" aria-label="Закрытое место в трюме"></button>'; }).join('')
@@ -119,9 +122,9 @@ function tutorial(engine) {
   var idle = engine.selected < 0 && !engine.aiming && engine.phase === 'idle' && Date.now() - (engine.lastActionAt || Date.now()) > HINT_IDLE_MS;
   if (!engine.profile || engine.profile.completed > 0 || engine.mode !== 'contract' || engine.contract !== 1) return { text: '', focus: '', move: idle };
   if (engine.phase !== 'idle') return none;
-  if (engine.quotaMet) return { text: 'Норма есть\nКопай дальше за излишек или сдай смену', focus: 'ckHand', move: false };
+  if (engine.quotaMet) return { text: 'Цель есть\nКопай дальше или сдай смену', focus: 'ckHand', move: false };
   if (!engine.turns) return { text: 'Поменяй две руды в рамке\nТри в ряд уходят в добычу', focus: '', move: engine.selected < 0 };
-  if (engine.turns < 3) return { text: 'Добыча растёт, норма ' + engine.goal + '\nКаждый ход стоит одно топливо', focus: 'ckScore ckFuel', move: false };
+  if (engine.turns < 3) return { text: 'Цель ' + engine.goal + ' руды\nКаждый обмен тратит один ход', focus: 'ckScore ckFuel', move: false };
   return { text: '', focus: '', move: idle };
 }
 
@@ -147,9 +150,11 @@ export function updateCockpit(engine, icon) {
   if (root.hidden) return;
   placeCockpit(engine);
   var q = function (s) { return root.querySelector(s); };
+  var sky = q('[data-ck-sky]'), skyHtml = skylineHtml(engine.mode === 'daily' ? null : engine.profile && engine.profile.base, chapterOf(engine), icon || function () { return ''; });
+  if (sky.__html !== skyHtml) { sky.__html = skyHtml; sky.innerHTML = skyHtml; }
   var daily = engine.mode === 'daily';
-  set(q('[data-ck-title]'), escapeHtml(daily ? 'Шахта дня' : engine.quotaMet ? 'Норма есть, сверх нормы' : 'Контракт ' + engine.contract));
-  set(q('[data-ck-score]'), escapeHtml(daily ? String(engine.score) : engine.quotaMet ? '+' + (engine.score - engine.goal) : engine.score + ' / ' + engine.goal));
+  set(q('[data-ck-title]'), escapeHtml(daily ? 'Шахта дня' : engine.quotaMet ? 'Цель есть, добыто' : 'Контракт ' + engine.contract));
+  set(q('[data-ck-score]'), escapeHtml(daily ? String(engine.score) : engine.quotaMet ? String(engine.score) : engine.score + ' / ' + engine.goal));
   set(q('[data-ck-fuel]'), String(engine.moves));
   var tutor = tutorial(engine), hint = engine.toast ? statusLine(engine) : tutor.text || statusLine(engine);
   [['ckScore', '[data-ck-score]'], ['ckFuel', '[data-ck-fuel]'], ['ckHand', '[data-ck-hand]']].forEach(function (pair) { q(pair[1]).classList.toggle('ck-coach', tutor.focus.indexOf(pair[0]) >= 0); });
@@ -188,7 +193,7 @@ export function updateCockpit(engine, icon) {
     set(ship, '<h3>Корабль</h3>'
       + '<p>Находки за смену: ' + (engine.findCount || 0) + '</p>'
       + '<p>Трюм: ' + open + ' из ' + HOLD_MAX + ' мест' + (open < HOLD_MAX ? ', ещё даст подъёмник' : '') + '</p>'
-      + '<p>Топливо на смену: ' + (engine.setup ? engine.setup.moves : engine.moves) + (b.fuel ? ' и +' + b.fuel + ' от генератора' : '') + '</p>'
+      + '<p>Ходы на смену: ' + (engine.setup ? engine.setup.moves : engine.moves) + (b.fuel ? ' и +' + b.fuel + ' от генератора' : '') + '</p>'
       + '<p>Шахтёры: ' + (engine.minersCrew || 0) + (b.miners ? '' : ', их даёт общежитие') + '</p>'
       + '<p>Способности: ' + list.length + (b.abilitySlots ? ' из ' + b.abilitySlots : ', откроет лаборатория') + '</p>'
       + '<p class="muted" style="color:#9aa59f">Нажми, чтобы закрыть</p>');

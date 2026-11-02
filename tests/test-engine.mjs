@@ -31,9 +31,10 @@ for (const [n, c] of M.contracts.entries()) {
 }
 check('every contract opens without a ready line', true);
 check('every field fits between the ladder and the shaft', M.contracts.every(c => c.cols <= 7 && c.rows <= 7));
-check('fields grow, quotas rise, moves stay within the first contract', M.contracts.every((c, i, all) => i === 0 || (c.cols * c.rows >= all[i - 1].cols * all[i - 1].rows && c.moves <= all[0].moves && c.quota >= all[i - 1].quota)) && M.contracts.at(-1).moves < M.contracts[0].moves);
+// Every fifth contract is a breather: its quota may dip, the next one picks up again.
+check('fields grow, quotas rise apart from breathers, moves stay within the first contract', M.contracts.every((c, i, all) => i === 0 || (c.cols * c.rows >= all[i - 1].cols * all[i - 1].rows && c.moves <= all[0].moves && ((i + 1) % 5 === 0 || c.quota >= all[i - 1].quota || i % 5 === 0))) && M.contracts.at(-1).moves < M.contracts[0].moves);
 check('every layer plays ores with distinct sprites', M.layers.every(layer => new Set(layer.ores).size === layer.ores.length && layer.ores.every(o => M.ores[o])));
-check('a setup carries its field, moves and palette', (() => { const s = M.contractSetup('contract', 4); return s.dims.cols === 5 && s.moves === M.contracts[3].moves && s.palette.length === 5; })());
+check('a setup carries its field, moves and palette', (() => { const s = M.contractSetup('contract', 5); return s.dims.cols === 5 && s.moves === M.contracts[4].moves && s.palette.length === 5; })());
 
 // ------------------------------------------------------------ the lines
 {
@@ -240,7 +241,7 @@ check('the moves come from the contract', e.moves === M.contracts[0].moves);
 }
 {
   const big = bootGame(), x = big.__m3;
-  x.profile.completed = 9; x.openCamp(); x.beginRound('contract');
+  x.profile.completed = 30; x.openCamp(); x.beginRound('contract');
   check('a deep contract plays a 7×7 field of its own ores', x.dims.cols === 7 && x.dims.rows === 7 && liveOre(big).length === 49 && x.palette.join() === M.layers[3].ores.join());
   check('a 7×7 field still fits the screen', x.board.x0 >= 60 && x.board.x0 + 7 * x.board.cell <= 660 && x.board.y0 + 7 * x.board.cell <= 910);
   check('cells are big enough for a finger on a 375 px phone', x.board.cell * 375 / 720 >= 44);

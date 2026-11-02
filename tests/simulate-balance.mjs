@@ -8,7 +8,9 @@ import { bootGame, memoryStorage } from './runtime.mjs';
 
 const runs = Number(process.argv[2] || 40);
 // Share of greedy shifts that should reach the quota, per contract.
-const TARGET = [0.9, 0.86, 0.82, 0.76, 0.7, 0.65, 0.6, 0.55, 0.5, 0.45, 0.4, 0.35];
+// From 90% on the first contract down to about 50% on the last; every fifth
+// contract is a breather, ten points easier than its neighbours.
+const TARGET = Array.from({ length: 40 }, (_, i) => Math.round((0.9 - 0.4 * i / 39 + ((i + 1) % 5 === 0 ? 0.1 : 0)) * 100) / 100);
 
 function moves(e) {
   const M = e.model, d = e.dims, n = d.cols * d.rows;
@@ -48,9 +50,11 @@ function shift(contract, policy, upgraded, seed) {
 
 const rtQuota = c => bootGame().__m3.model.contracts[c - 1].quota;
 const report = [];
-for (let c = 1; c <= 12; c++) {
+const ONLY = process.argv[3] ? process.argv[3].split(',').map(Number) : null;
+for (let c = 1; c <= 40; c++) {
+  if (ONLY && !ONLY.includes(c)) continue;
   const row = { contract: c };
-  for (const [name, policy, upgraded] of [['random', 'random', false], ['greedy', 'greedy', false], ['upgraded', 'greedy', true]]) {
+  for (const [name, policy, upgraded] of [['random', 'random', false], ['greedy', 'greedy', false]]) {
     const scores = [];
     for (let r = 0; r < runs; r++) scores.push(shift(c, policy, upgraded, `bal-${c}-${r}`));
     scores.sort((a, b) => a - b);
@@ -60,8 +64,8 @@ for (let c = 1; c <= 12; c++) {
   row.suggestedQuota = Math.round(greedy[Math.floor((greedy.length - 1) * (1 - TARGET[c - 1]))] / 50) * 50;
   row.quota = rtQuota(c);
   const pass = scores => scores.filter(s => s >= row.quota).length / scores.length;
-  row.pass = { random: pass(row.random), greedy: pass(row.greedy), upgraded: pass(row.upgraded) };
+  row.pass = { random: pass(row.random), greedy: pass(row.greedy) };
   report.push(row);
-  console.log(`C${c}: quota ${row.quota} (suggested ${row.suggestedQuota}) · pass random ${Math.round(row.pass.random * 100)}% greedy ${Math.round(row.pass.greedy * 100)}% upgraded ${Math.round(row.pass.upgraded * 100)}% · greedy median ${greedy[greedy.length >> 1]}`);
+  console.log(`C${c}: quota ${row.quota} (suggested ${row.suggestedQuota}) · pass random ${Math.round(row.pass.random * 100)}% greedy ${Math.round(row.pass.greedy * 100)}% · greedy median ${greedy[greedy.length >> 1]}`);
 }
 writeFileSync(new URL('../build/reports/balance-simulation.json', import.meta.url), JSON.stringify({ runs, target: TARGET, report }, null, 1));

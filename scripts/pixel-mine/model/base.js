@@ -1,7 +1,7 @@
 // Pure rules for the base: placing and upgrading buildings on the grid, the
 // income they make per hour, how long it can pile up, and what the base gives
 // to a shift. Time is passed in (milliseconds), never read here.
-import { BASE_SIZE, BUILDINGS, NO_STORAGE_CAP_HOURS, UNLOCKS } from "../config.js";
+import { BASE_SIZE, BUILDINGS, ECONOMY, NO_STORAGE_CAP_HOURS, UNLOCKS } from "../config.js";
 
 var HOUR = 3600000;
 
@@ -74,7 +74,7 @@ export function hoursToFull(base, now) {
 
 export function collect(profile, now) {
   var amount = pending(profile.base, now);
-  profile.credits = Math.min(999999, profile.credits + amount);
+  profile.credits = Math.min(ECONOMY.wallet, profile.credits + amount);
   profile.base.last = now;
   return amount;
 }
@@ -85,7 +85,7 @@ export function build(profile, type, x, y, now) {
   if (!def) return { ok: false, message: 'Такой постройки нет' };
   if (!isOpen(type, profile.completed)) return { ok: false, message: 'Откроется позже' };
   if (!canPlace(profile.base, type, x, y)) return { ok: false, message: def.w > 1 ? 'Нужны две свободные клетки рядом' : 'Клетка занята' };
-  if (profile.credits < def.costs[0]) return { ok: false, message: 'Нужно ещё ' + (def.costs[0] - profile.credits) + ' кр.' };
+  if (profile.credits < def.costs[0]) return { ok: false, message: 'Нужно ещё ' + (def.costs[0] - profile.credits) + ' руды' };
   // Collect first, so a new building does not earn for the hours before it existed.
   if (profile.base.last !== null && profile.base.last !== undefined) collect(profile, now); else profile.base.last = now;
   profile.credits -= def.costs[0];
@@ -100,7 +100,7 @@ export function upgrade(profile, id, now) {
   var def = BUILDINGS[b.type];
   if (b.level >= def.costs.length) return { ok: false, message: 'Максимальный уровень' };
   var cost = def.costs[b.level];
-  if (profile.credits < cost) return { ok: false, message: 'Нужно ещё ' + (cost - profile.credits) + ' кр.' };
+  if (profile.credits < cost) return { ok: false, message: 'Нужно ещё ' + (cost - profile.credits) + ' руды' };
   collect(profile, now);
   profile.credits -= cost;
   b.level += 1;

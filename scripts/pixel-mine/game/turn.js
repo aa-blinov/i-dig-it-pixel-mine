@@ -34,7 +34,7 @@ function minerTurn(engine) {
   engine.minersLeft--;
   engine.moves++;
   engine.minerDelivery = (engine.minerDelivery || 0) + 1;
-  engine.toast = 'Горняк спустился с топливом: +1';
+  engine.toast = 'Горняк принёс ход: +1';
   engine.toastTimer = 1.8;
 }
 
@@ -184,7 +184,7 @@ function fireAbility(engine, id, index) {
     engine.toast = 'Руда перемешана'; engine.toastTimer = 1.6;
   } else if (id === 'reserve') {
     engine.moves += 2;
-    engine.toast = 'Запас топлива: +2'; engine.toastTimer = 1.6;
+    engine.toast = 'Запас ходов: +2'; engine.toastTimer = 1.6;
   } else if (id === 'rush') {
     engine.rushMoves = 2;
     engine.toast = 'Лихорадка: два хода с +50% руды'; engine.toastTimer = 2;
@@ -347,7 +347,7 @@ export function step(engine, dt) {
       if (engine.campaignEnabled && engine.mode !== 'daily' && !engine.quotaMet && engine.score >= engine.goal) {
         engine.quotaMet = true;
         engine.fuelAtQuota = engine.moves;
-        engine.toast = 'Норма выполнена\nВсё сверх нормы идёт в карман';
+        engine.toast = 'Цель есть\nКопай дальше или сдай смену';
         engine.toastTimer = 2.6;
         engine.shake = 0.3;
         playSfx(engine, 'find');
@@ -360,7 +360,7 @@ export function step(engine, dt) {
         playSfx(engine, won ? 'find' : 'select');
       } else {
         engine.phase = engine.moves <= 0 ? 'over' : 'idle';
-        if (engine.phase === 'idle' && engine.moves > 0 && engine.moves <= 3) { engine.toast = 'Топливо на исходе: ' + engine.moves; engine.toastTimer = 1.6; }
+        if (engine.phase === 'idle' && engine.moves > 0 && engine.moves <= 3) { engine.toast = 'Ходы на исходе: ' + engine.moves; engine.toastTimer = 1.6; }
       }
     }
     updateTexts(engine);

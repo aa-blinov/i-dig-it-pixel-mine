@@ -22,6 +22,7 @@ import { colOf, rowOf } from "../model/grid.js";
 import { CONTRACT_BRIEFS, storyLines } from "../story.js";
 import { enterChallenge } from "./challenge-dialog.js";
 import { COCKPIT_CSS, setupCockpit, updateCockpit } from "./cockpit.js";
+import { SKYLINE_CSS } from "./skyline.js";
 import { INTRO, howToHtml, introSlideHtml } from "./intro.js";
 import { saveProfile } from "../model/profile.js";
 
@@ -38,7 +39,7 @@ export function plural(n, one, few, many) {
 // each value under its own label so no figure has to be guessed.
 export function contractCard(number) {
   var setup = contractSetup('contract', number);
-  return [{ label: 'Шахта', value: setup.layerName }, { label: 'Поле', value: setup.dims.cols + '×' + setup.dims.rows }, { label: 'Топливо', value: plural(setup.moves, 'ход', 'хода', 'ходов') }, { label: 'Норма', value: setup.quota + ' руды' }];
+  return [{ label: 'Шахта', value: setup.layerName }, { label: 'Поле', value: setup.dims.cols + '×' + setup.dims.rows }, { label: 'Ходы', value: String(setup.moves) }, { label: 'Цель', value: setup.quota + ' руды' }];
 }
 
 function escapeHtml(value) {
@@ -51,7 +52,9 @@ function renderIntro(engine) {
   if (!show) return;
   var step = Math.min(engine.introStep || 0, INTRO.length - 1);
   if (intro.__step !== step) { intro.__step = step; intro.querySelector('[data-intro-body]').innerHTML = introSlideHtml(step); }
-  intro.querySelector('[data-intro-next]').textContent = step === INTRO.length - 1 ? 'К работе' : 'Дальше';
+  intro.querySelector('[data-intro-next]').textContent = step === INTRO.length - 1 ? 'В шахту' : 'Дальше';
+  // A single card has nothing to skip.
+  intro.querySelector('[data-intro-skip]').hidden = INTRO.length === 1;
 }
 
 function radioHtml(lines) {
@@ -112,13 +115,13 @@ function hoursText(hours) {
 // What a building does at a level, in one line.
 export function buildingEffect(type, level) {
   var def = BUILDINGS[type], i = level - 1;
-  if (def.income) return def.income[i] + ' кр. в час';
+  if (def.income) return def.income[i] + ' руды в час';
   if (def.capHours) return 'копит доход до ' + def.capHours[i] + ' ч';
-  if (def.fuel) return '+' + def.fuel[i] + ' топлива в начале смены';
+  if (def.fuel) return '+' + plural(def.fuel[i], 'ход', 'хода', 'ходов') + ' в начале смены';
   if (def.miners) return def.miners[i] + ' ' + (def.miners[i] === 1 ? 'горняк' : 'горняка') + ' на лестнице';
   if (def.cargo) return '+' + def.cargo[i] + ' места в трюме';
   if (def.slots) return def.slots[i] + ' слота способностей';
-  if (def.bonus) return '+' + def.bonus[i] + '% к излишку за полный набор';
+  if (def.bonus) return '+' + def.bonus[i] + '% к руде за полный набор';
   if (def.ships) return def.ships[i] + ' ' + (def.ships[i] === 1 ? 'корабль' : 'корабля') + ' для экспедиций';
   return def.about;
 }
@@ -129,8 +132,8 @@ function renderBase(engine, text) {
   var left = hoursToFull(base, now);
   // An empty base opens with a cell already picked, so the list of buildings and prices is right there.
   if (!base.buildings.length && !engine.baseCell) engine.baseCell = { x: 2, y: 2 };
-  text(n.income, rate ? 'Доход ' + rate + ' кр. в час. ' + (left <= 0 ? 'Склад полон, забери доход' : 'Склад полон через ' + hoursText(left)) : 'Начни с плавильни: она приносит кредиты каждый час, даже когда ты не играешь');
-  text(n.collect, 'Забрать ' + waiting + ' кр.');
+  text(n.income, rate ? 'Город добывает ' + rate + ' руды в час. ' + (left <= 0 ? 'Город полон, забери руду' : 'Город полон через ' + hoursText(left)) : 'Поставь плавильню: она бесплатная и добывает руду, даже когда ты не играешь');
+  text(n.collect, 'Забрать ' + waiting + ' руды');
   n.collect.disabled = waiting <= 0;
   // Before the first building there is nothing to collect: the list of buildings comes first instead.
   n.collect.hidden = !base.buildings.length;
@@ -149,7 +152,11 @@ function renderBase(engine, text) {
     }
   }
   n.basegrid.innerHTML = html;
-  text(n.baseStatus, engine.baseMessage || 'Выбери клетку, чтобы построить или улучшить');
+  // One goal for the town: the cheapest building the player has not put up yet.
+  var nextType = Object.keys(BUILDINGS).filter(function (type) { return isOpen(type, p.completed) && !BUILDINGS[type].decor && !base.buildings.some(function (b) { return b.type === type; }); })
+    .sort(function (a, b) { return BUILDINGS[a].costs[0] - BUILDINGS[b].costs[0]; })[0];
+  var goal = nextType ? 'Следующее: ' + BUILDINGS[nextType].name.toLowerCase() + (BUILDINGS[nextType].costs[0] ? ' за ' + BUILDINGS[nextType].costs[0] + ' руды, у тебя ' + p.credits : ', бесплатно') : 'Выбери клетку, чтобы построить или улучшить';
+  text(n.baseStatus, engine.baseMessage || goal);
   var cell = engine.baseCell;
   n.basecell.hidden = !cell;
   if (!cell) return;
@@ -158,24 +165,24 @@ function renderBase(engine, text) {
     var d = BUILDINGS[here.type], max = here.level >= d.costs.length;
     n.basecell.innerHTML = '<h2>' + escapeHtml(d.name) + (d.decor ? '' : ', уровень ' + here.level) + '</h2><p class="muted">' + escapeHtml(d.about) + '</p>'
       + (d.decor ? '' : '<p>Сейчас: ' + escapeHtml(buildingEffect(here.type, here.level)) + (max ? '' : '<br>Дальше: ' + escapeHtml(buildingEffect(here.type, here.level + 1))) + '</p>'
-      + '<div class="mine-actions"><button class="primary" data-upgrade="' + here.id + '"' + (max || p.credits < d.costs[here.level] ? ' disabled' : '') + '>' + (max ? 'Максимальный уровень' : 'Улучшить за ' + d.costs[here.level] + ' кр.') + '</button></div>');
+      + '<div class="mine-actions"><button class="primary" data-upgrade="' + here.id + '"' + (max || p.credits < d.costs[here.level] ? ' disabled' : '') + '>' + (max ? 'Максимальный уровень' : 'Улучшить за ' + d.costs[here.level] + ' руды') + '</button></div>');
     return;
   }
   var options = Object.keys(BUILDINGS).filter(function (type) { return isOpen(type, p.completed); }).map(function (type) {
     var d2 = BUILDINGS[type], fits = canPlace(base, type, cell.x, cell.y), cost = d2.costs[0];
-    var reason = !fits ? (d2.w > 1 ? 'нужны две клетки рядом' : 'не помещается') : p.credits < cost ? 'не хватает кредитов' : '';
+    var reason = !fits ? (d2.w > 1 ? 'нужны две клетки рядом' : 'не помещается') : p.credits < cost ? 'не хватает руды' : '';
     return '<div class="mine-build">' + iconHtml(engine, type, 48) + '<div><h3>' + escapeHtml(d2.name) + (d2.w > 1 ? ' <span class="muted">2 клетки</span>' : '') + '</h3><p>' + escapeHtml(d2.decor ? d2.about : buildingEffect(type, 1)) + '</p></div>'
-      + '<button data-build="' + type + '"' + (reason ? ' disabled' : '') + ' aria-label="' + escapeHtml('Построить ' + d2.name + (reason ? ', ' + reason : '')) + '">' + (cost ? 'Построить за ' + cost + ' кр.' : 'Построить бесплатно') + '</button></div>';
+      + '<button data-build="' + type + '"' + (reason ? ' disabled' : '') + ' aria-label="' + escapeHtml('Построить ' + d2.name + (reason ? ', ' + reason : '')) + '">' + (cost ? 'Построить за ' + cost + ' руды' : 'Построить бесплатно') + '</button></div>';
   });
   // The first building gets a recommendation: the free storage, then a smelter next to it.
-  var tip = base.buildings.length ? '' : '<p class="mine-unlock">Совет: поставь бесплатный склад, а рядом плавильню. Вместе они приносят на 20% больше</p>';
+  var tip = base.buildings.length ? '' : '<p class="mine-unlock">Совет: начни с бесплатной плавильни. Позже рядом с ней встанет склад, и вместе они добудут на 20% больше</p>';
   n.basecell.innerHTML = '<h2>' + (base.buildings.length ? 'Клетка ' + 'ABCDEF'.charAt(cell.x) + (cell.y + 1) : 'Что построить') + '</h2>' + tip + options.join('');
 }
 
 function renderLab(engine) {
   var panel = engine.nativeUI.querySelector('[data-panel="lab"]'), p = engine.profile, slots = baseBonuses(p.base).abilitySlots;
   if (!slots) { panel.innerHTML = '<section class="panel"><h2>Лаборатория</h2><p>Построй лабораторию на вкладке «База», и сюда можно будет брать способности для смены</p></section>'; return; }
-  panel.innerHTML = '<section class="panel"><h2>Лаборатория</h2><p class="muted">Заряд копится от каждой убранной руды. Способности не тратят топливо. Взято ' + p.abilities.length + ' из ' + slots + '</p>'
+  panel.innerHTML = '<section class="panel"><h2>Лаборатория</h2><p class="muted">Заряд копится от каждой убранной руды. Способности не тратят ходы. Взято ' + p.abilities.length + ' из ' + slots + '</p>'
     + Object.keys(ABILITIES).map(function (id) {
       var a = ABILITIES[id], taken = p.abilities.indexOf(id) >= 0;
       return '<div class="mine-build"><span class="mine-charge">' + a.cost + '</span><div><h3>' + escapeHtml(a.name) + '</h3><p>' + escapeHtml(a.about) + '</p></div><button data-ability="' + id + '" aria-pressed="' + taken + '"' + (!taken && p.abilities.length >= slots ? ' disabled' : '') + '>' + (taken ? 'Убрать' : 'Взять') + '</button></div>';
@@ -199,7 +206,7 @@ function renderCollection(engine) {
       + (setComplete(c, layer) ? '<p class="mine-unlock">' + escapeHtml(CHRONICLE[layer]) + '</p>' : '') + '</section>';
   });
   var heard = [];
-  for (var beat = 0; beat <= Math.min(p.completed, 12); beat++) heard = heard.concat(storyLines(beat));
+  for (var beat = 0; beat <= p.completed; beat++) heard = heard.concat(storyLines(beat));
   html += '<details class="panel"><summary>Летопись: что говорили по телеграфу</summary>' + radioHtml(heard) + '</details>';
   panel.innerHTML = html;
 }
@@ -242,7 +249,7 @@ function renderAbilities(engine) {
 
 function setup(engine) {
   var style = document.createElement('style');
-  style.textContent = interfaceCss() + COCKPIT_CSS;
+  style.textContent = interfaceCss() + COCKPIT_CSS + SKYLINE_CSS;
   document.head.appendChild(style);
   var root = engine.nativeUI = document.createElement('section'); root.id = 'mine-interface';
   root.innerHTML = INTERFACE_HTML;
@@ -305,7 +312,7 @@ function setup(engine) {
   function showMenu(page) {
     menuMain.hidden = !!page; menuSub.hidden = !page;
     if (page === 'howto') q('[data-menu-body]').innerHTML = howToHtml();
-    if (page === 'story') { var heard = []; for (var beat = 0; beat <= Math.min(engine.profile.completed, 12); beat++) heard = heard.concat(storyLines(beat)); q('[data-menu-body]').innerHTML = '<h1>Сюжет</h1>' + radioHtml(heard); }
+    if (page === 'story') { var heard = []; for (var beat = 0; beat <= engine.profile.completed; beat++) heard = heard.concat(storyLines(beat)); q('[data-menu-body]').innerHTML = '<h1>Сюжет</h1>' + radioHtml(heard); }
     var first = (page ? menuSub : menuMain).querySelector('button'); if (first) first.focus();
   }
   q('[data-open-sheet]').addEventListener('click', function () { engine.sheetOpen = true; engine.nativeNodes.sheet.hidden = false; document.querySelectorAll('canvas').forEach(function (c) { c.inert = true; }); showMenu(null); updateNativeInterface(engine); });
@@ -329,24 +336,21 @@ function setup(engine) {
 function renderResult(engine, text) {
   var n = engine.nativeNodes, last = engine.lastResult, pay = last.pay || {};
   var daily = last.mode === 'daily';
-  text(n.resultTitle, daily ? 'Шахта дня' : last.won ? 'Смена сдана' : 'Топливо закончилось');
+  text(n.resultTitle, daily ? 'Шахта дня' : last.won ? 'Смена сдана' : 'Ходы закончились');
   n.resultStars.hidden = daily || !last.won;
   n.resultStars.innerHTML = [1, 2, 3].map(function (k) { return '<span class="' + (k <= last.stars ? '' : 'off') + '">★</span>'; }).join('');
-  n.resultStars.setAttribute('aria-label', 'Мастерство ' + last.stars + ' из 3');
+  n.resultStars.setAttribute('aria-label', 'Звёзд ' + last.stars + ' из 3');
   var rows = [['Добыто', last.score]];
   if (daily) {
     rows.push(['Лучший результат дня', engine.profile.dailyBest[last.seed.slice(4)] || last.score]);
   } else if (last.won) {
-    rows.push(['Норма', last.goal]);
-    rows.push(['Сверх нормы', '+' + pay.excess]);
-    rows.push(['Кредиты' + (last.replay ? ', повтор ' + Math.round(pay.rate * 100) + '%' : ''), '+' + last.credits, 'gold']);
-    // Where the credits come from, so a bigger excess never looks like a smaller reward.
-    rows.push([pay.base + ' за контракт, ' + pay.excessCredits + ' за излишек' + (pay.finds ? ', ' + pay.finds + ' за находки' : ''), '', 'note']);
+    if (pay.bonus) rows.push(['Прибавка за звёзды, +' + pay.bonusPct + '%', '+' + pay.bonus]);
+    rows.push(['В город' + (last.replay ? ', повтор ' + Math.round(pay.rate * 100) + '%' : ''), '+' + last.credits, 'gold']);
     // The stars say what they are for, so one star does not read as a telling-off.
-    rows.push(['Звёзды за топливо, которое осталось к норме', '', 'note']);
+    rows.push(['Звёзды за ходы, которые остались к цели', '', 'note']);
   } else {
-    rows.push(['До нормы не хватило', Math.max(0, last.goal - last.score)]);
-    if (last.credits) rows.push(['Кредиты за смену', '+' + last.credits, 'gold']);
+    rows.push(['До цели не хватило', Math.max(0, last.goal - last.score)]);
+    if (last.credits) { rows.push(['В город', '+' + last.credits, 'gold']); rows.push(['Половина добычи всё равно едет в город', '', 'note']); }
   }
   n.resultRows.innerHTML = rows.map(function (row) {
     if (row[2] === 'note') return '<dt style="grid-column:1/-1;opacity:.75;font-size:.85em;margin-top:-4px">' + escapeHtml(row[0]) + '</dt>';
@@ -404,7 +408,7 @@ export function updateNativeInterface(engine) {
 
   // Base.
   text(nodes.title, p.completed === CONTRACTS.length && chosen === next ? 'Лицензия мастера' : 'Контракт ' + chosen);
-  text(nodes.wallet, 'Кредиты ' + p.credits);
+  text(nodes.wallet, 'Руда ' + p.credits);
   var chips = contractCard(chosen), rate = contractRate(engine, chosen);
   if (rate < 1) chips.push({ label: 'Награда', value: Math.round(rate * 100) + '%' });
   nodes.card.innerHTML = chips.map(function (chip, i) { return '<li class="chip stat' + (rate < 1 && i === chips.length - 1 ? ' gold' : '') + '"><small>' + escapeHtml(chip.label) + '</small><b>' + escapeHtml(chip.value) + '</b></li>'; }).join('');
@@ -416,7 +420,8 @@ export function updateNativeInterface(engine) {
   if (base) text(nodes.announcement, nodes.summary.textContent);
   // New systems appear when there is a reason for them, not all at once.
   root.querySelectorAll('[data-after-daily]').forEach(function (node) { node.hidden = p.completed < UNLOCKS.daily; });
-  nodes.workshop.hidden = p.completed < UNLOCKS.workshop;
+  // Ship modules are retired; their work moved to the generator, the lift and the lab.
+  nodes.workshop.hidden = true;
   nodes.contracts.hidden = p.completed < UNLOCKS.replay;
   var numbers = [];
   for (var k = 1; k <= next; k++) numbers.push(k);
@@ -444,9 +449,9 @@ export function updateNativeInterface(engine) {
   // In the shift.
   if (!base && engine.dims) {
     var dims = engine.dims;
-    text(root.querySelector('[data-leave]'), engine.quotaMet ? 'Сдать смену' : engine.leaveTimer > 0 ? 'Точно выйти? Добыча пропадёт' : 'Выйти на базу');
-    nodes.hud.innerHTML = '<span>Добыча ' + engine.score + (engine.mode === 'daily' ? '' : ' из ' + engine.goal) + '</span><span>Топливо ' + engine.moves + '</span>';
-    var status = (engine.mode === 'daily' ? 'Шахта дня: добыча ' + engine.score : 'Контракт ' + engine.contract + ': добыча ' + engine.score + ' из ' + engine.goal) + ', топливо ' + engine.moves + ', находок ' + engine.findCount
+    text(root.querySelector('[data-leave]'), engine.quotaMet ? 'Сдать смену' : engine.leaveTimer > 0 ? 'Точно выйти? Добыча пропадёт' : 'Выйти в город');
+    nodes.hud.innerHTML = '<span>Добыча ' + engine.score + (engine.mode === 'daily' ? '' : ' из ' + engine.goal) + '</span><span>Ходы ' + engine.moves + '</span>';
+    var status = (engine.mode === 'daily' ? 'Шахта дня: добыча ' + engine.score : 'Контракт ' + engine.contract + ': добыча ' + engine.score + ' из ' + engine.goal) + ', ходов ' + engine.moves + ', находок ' + engine.findCount
       + (engine.selected >= 0 ? ', выбрана строка ' + (rowOf(dims, engine.selected) + 1) + ', столбец ' + (colOf(dims, engine.selected) + 1) : '');
     text(nodes.status, status);
     if (engine.phase === 'idle') text(nodes.announcement, status + (engine.toast ? '. ' + engine.toast.replace(/\n/g, ', ') : ''));

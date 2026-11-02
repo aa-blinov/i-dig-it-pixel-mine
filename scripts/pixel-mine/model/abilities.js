@@ -12,7 +12,7 @@ export var ABILITIES = {
   magnet: { name: 'Магнит', cost: 36, target: true, about: 'Забирает всю руду того вида, на который укажешь' },
   seismo: { name: 'Сейсмозонд', cost: 18, target: false, about: 'Показывает все тайники на 3 хода' },
   shuffle: { name: 'Перемешать', cost: 14, target: false, about: 'Перемешивает руду, спецфишки остаются' },
-  reserve: { name: 'Запас топлива', cost: 30, target: false, about: '+2 топлива сразу' },
+  reserve: { name: 'Запас ходов', cost: 30, target: false, about: '+2 хода сразу' },
   rush: { name: 'Лихорадка', cost: 26, target: false, about: 'Два следующих хода дают +50% руды' }
 };
 export var DEFAULT_LOADOUT = ['dynamite', 'shuffle', 'reserve'];

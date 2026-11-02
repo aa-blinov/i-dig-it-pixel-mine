@@ -1,5 +1,5 @@
 // The shift cycle: base, contract or daily round, settlement, shop and sharing.
-import { CONTRACTS, MODULES, UNLOCKS } from "../config.js";
+import { CONTRACTS, ECONOMY, MODULES, UNLOCKS } from "../config.js";
 import { replayRate, settleShift } from "../model/economy.js";
 import { baseBonuses } from "../model/base.js";
 import { loadout } from "../model/abilities.js";
@@ -32,7 +32,8 @@ export function beginRound(engine, mode, challenge) {
   engine.bonuses = engine.mode === 'daily' ? baseBonuses({ buildings: [] }) : baseBonuses(engine.profile.base);
   engine.abilities = loadout(engine.profile.abilities, engine.bonuses.abilitySlots);
   engine.roundModules = {};
-  Object.keys(MODULES).forEach(function (id) { engine.roundModules[id] = engine.mode !== 'daily' && engine.profile.equipped.indexOf(id) >= 0 ? engine.profile.upgrades[id] : 0; });
+  // Ship modules are retired: the generator, the lift and the lab do their work now.
+  Object.keys(MODULES).forEach(function (id) { engine.roundModules[id] = 0; });
   engine.seed = engine.mode === 'daily' ? (validChallengeCode(challenge || '') ? challenge : 'PM2-' + dailyCode()) : 'C' + engine.contract + '-' + Math.floor(Math.random() * 0x7fffffff).toString(16);
   engine.rand = seededRandom(engine.seed); engine.profile.attempts++; saveProfile(engine);
   engine.campMessage = ''; engine.shopMessage = ''; engine.storyBeat = null; startGame(engine);
@@ -45,7 +46,7 @@ export function requestLeave(engine) {
   if (engine.quotaMet && engine.phase === 'idle') { engine.phase = 'ending'; engine.endTimer = 0.6; updateInterface(engine); return; }
   if (engine.leaveTimer > 0) { engine.leaveTimer = 0; openCamp(engine, 'Смена прервана, награда не начислена'); return; }
   engine.leaveTimer = 3;
-  engine.toast = 'Нажми ещё раз, чтобы уйти на базу\nДобыча этой смены пропадёт';
+  engine.toast = 'Нажми ещё раз, чтобы уйти в город\nДобыча этой смены пропадёт';
   engine.toastTimer = 3;
   updateInterface(engine);
 }
@@ -61,7 +62,7 @@ export function finishRound(engine) {
   var pay = settleShift({ museumPct: museumPct, daily: daily, won: won, contract: engine.contract, score: engine.score, quota: engine.goal, finds: engine.findCount, fuelAtQuota: engine.fuelAtQuota === undefined || engine.fuelAtQuota === null ? engine.moves : engine.fuelAtQuota, used: used, replays: replays });
   var reward = pay.reward, before = engine.profile.completed;
   if (replay) engine.profile.replays[engine.contract] = replays + 1;
-  engine.profile.credits = Math.min(999999, engine.profile.credits + reward);
+  engine.profile.credits = Math.min(ECONOMY.wallet, engine.profile.credits + reward);
   if (won) engine.profile.completed = Math.max(engine.profile.completed, engine.contract);
   if (firstWin) engine.storyBeat = engine.contract;
   (engine.relics || []).forEach(function (id) { engine.profile.collection[id] = (engine.profile.collection[id] || 0) + 1; });
@@ -69,8 +70,8 @@ export function finishRound(engine) {
   var stars = pay.stars;
   engine.lastResult = { pay: pay, mode: engine.mode, contract: engine.contract, goal: engine.goal, score: engine.score, moves: engine.moves, seed: engine.seed, finds: engine.findCount, won: won, stars: stars, credits: reward, modules: engine.profile.equipped.map(function (id) { return MODULES[id].name + ' ' + engine.profile.upgrades[id]; }) };
   var message = daily ? 'Шахта дня: добыто ' + engine.score + ', лучший результат ' + engine.profile.dailyBest[engine.seed.slice(4)] + '. Код этой шахты можно отправить другу'
-    : won ? 'Контракт ' + engine.contract + ' выполнен, мастерство ' + stars + ' из 3. Норма ' + engine.goal + ', сверх нормы ' + pay.excess + ' руды. Награда ' + reward + ' кр.' + (replay ? ' Это повтор, награда ' + Math.round(pay.rate * 100) + '%.' : '') + unlockNote(before, engine.profile.completed)
-    : 'Топливо закончилось: до цели не хватило ' + Math.max(0, engine.goal - engine.score) + ' руды. ' + (reward ? 'За смену начислено ' + reward + ' кр. ' : '') + 'Контракт можно начать снова, находки и кредиты остаются';
+    : won ? 'Контракт ' + engine.contract + ' выполнен, звёзд ' + stars + ' из 3. В город отправлено ' + reward + ' руды.' + (replay ? ' Это повтор, в город идёт ' + Math.round(pay.rate * 100) + '%.' : '') + unlockNote(before, engine.profile.completed)
+    : 'Ходы закончились: до цели не хватило ' + Math.max(0, engine.goal - engine.score) + ' руды. ' + (reward ? 'В город отправлено ' + reward + ' руды. ' : '') + 'Контракт можно начать снова, руда в городе остаётся';
   if (daily) { engine.lastResult.gains = moveGains(engine.moveMarks, engine.score, engine.findCount); engine.shareMessage = ''; }
   engine.lastResult.unlocks = unlockList(before, engine.profile.completed);
   engine.lastResult.replay = replay;
@@ -90,13 +91,15 @@ function unlockNote(before, after) {
 
 function unlockList(before, after) {
   var notes = [];
-  if (before < UNLOCKS.daily && after >= UNLOCKS.daily) notes.push('Открыта шахта дня и повтор пройденных контрактов');
-  if (before < UNLOCKS.base && after >= UNLOCKS.base) notes.push('Открыта база. Плавильня приносит кредиты, подъёмник открывает места в трюме');
-  if (before < UNLOCKS.workshop && after >= UNLOCKS.workshop) notes.push('Открыта мастерская. Модули для корабля и генератор с топливом');
-  if (before < UNLOCKS.miners && after >= UNLOCKS.miners) notes.push('Открыто общежитие. Шахтёры спускаются с топливом');
-  if (before < UNLOCKS.lab && after >= UNLOCKS.lab) notes.push('Открыта Лаборатория. Возьми динамит в смену');
-  if (before < UNLOCKS.museum && after >= UNLOCKS.museum) notes.push('Открыта коллекция. Собирай наборы находок для музея');
-  if (before < UNLOCKS.fleet && after >= UNLOCKS.fleet) notes.push('Открыт флот. Построй док и отправь корабль в рейс');
+  var opened = function (key) { return before < UNLOCKS[key] && after >= UNLOCKS[key]; };
+  if (opened('base')) notes.push('Открыт город. Первая плавильня бесплатная, она добывает руду, пока тебя нет');
+  if (opened('storage')) notes.push('Открыт склад. Город копит руду дольше, можно уйти на ночь');
+  if (opened('daily')) notes.push('Открыта шахта дня. Одно поле на всех, сравни добычу с друзьями');
+  if (opened('boost')) notes.push('Открыты генератор и подъёмник. Город даёт смене лишние ходы и место в трюме');
+  if (opened('lab')) notes.push('Открыта лаборатория. Возьми динамит в смену');
+  if (opened('museum')) notes.push('Открыта коллекция. Собирай наборы находок для музея');
+  if (opened('miners')) notes.push('Открыто общежитие. Шахтёры спускаются с ходами');
+  if (opened('fleet')) notes.push('Открыт флот. Построй док и отправь корабль в рейс');
   if (after >= CONTRACTS.length && before < CONTRACTS.length) notes.push('Лицензия мастера получена');
   return notes;
 }

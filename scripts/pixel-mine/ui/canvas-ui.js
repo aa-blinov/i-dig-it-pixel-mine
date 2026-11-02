@@ -61,7 +61,7 @@ export function updateInterface(engine) {
   uiText(engine, 'gameGoal', cockpit ? '' : engine.mode === 'daily' ? 'Шахта дня ' + engine.seed.slice(4) : engine.quotaMet ? 'Норма выполнена, сверх нормы ' + (engine.score - engine.goal) : 'Контракт ' + engine.contract + ': ' + engine.score + ' из ' + engine.goal, 104, 273, 512, 34, 17);
   uiText(engine, 'gameScoreLabel', cockpit ? '' : 'Добыча', 350, 25, 168, 60, 20);
   uiText(engine, 'gameMovesLabel', cockpit ? '' : 'Топливо', 24, 1026, 240, 38, 16);
-  uiText(engine, 'gameBaseButton', cockpit ? '' : engine.quotaMet ? 'Сдать смену' : engine.leaveTimer > 0 ? 'Точно уйти?' : 'На базу', 300, 1160, 354, 54, 23);
+  uiText(engine, 'gameBaseButton', cockpit ? '' : engine.quotaMet ? 'Сдать смену' : engine.leaveTimer > 0 ? 'Точно уйти?' : 'В город', 300, 1160, 354, 54, 23);
   var banner = engine.phase === 'ending' ? (engine.quotaMet ? 'Смена сдана' : 'Топливо закончилось') : '';
   uiText(engine, 'gameBanner', banner, 60, 540, 600, 96, 34, engine.score >= engine.goal && engine.mode !== 'daily' ? [1, 0.88, 0.5] : [0.98, 0.94, 0.81]);
   if (engine.ui && engine.ui.gameBanner && engine.ui.gameBanner.moveToTop && banner && !engine.bannerRaised) { engine.ui.gameBanner.moveToTop(); engine.bannerRaised = true; }
@@ -70,7 +70,7 @@ export function updateInterface(engine) {
     engine.goalFill = engine.runtime.objects.GoalFill.createInstance('Game', 106, 305);
   }
   if (engine.goalFill) { engine.goalFill.isVisible = !base && engine.mode !== 'daily'; engine.goalFill.setSize(Math.max(2, 508 * Math.min(1, engine.score / engine.goal)), 5); }
-  uiText(engine, 'campWallet', 'Кредиты: ' + p.credits, 350, 25, 340, 60, 21);
+  uiText(engine, 'campWallet', 'Руда: ' + p.credits, 350, 25, 340, 60, 21);
   uiText(engine, 'campTitle', p.completed === CONTRACTS.length ? 'Лицензия мастера получена' : 'База, контракт ' + contract, 44, 132, 632, 64, 27);
   var summary = contractCard(contract).map(function (c) { return c.label + ' ' + c.value; }).join(', ') + '\n' + (engine.campMessage || CONTRACT_BRIEFS.at(contract - 1) || '');
   var collected = Object.keys(p.collection).length;
