@@ -100,6 +100,9 @@ export var NO_STORAGE_CAP_HOURS = 2;
 
 // The daily challenge: one layout for everyone, from the middle of the mine.
 export var DAILY = { quota: 0, moves: 20, cols: 6, rows: 6, layer: 1 };
+// The shared daily card: ore per move from which a move counts as good and as big.
+// The greedy bot's moves split about a quarter to each square (median 108, upper quarter 390).
+export var DAILY_CARD = { good: 100, big: 300 };
 
 export var FIND_DEFS = {
   ring: { name: 'Редкая находка', value: 250, weight: 3 },

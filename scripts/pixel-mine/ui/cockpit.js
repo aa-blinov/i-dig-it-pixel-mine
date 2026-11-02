@@ -171,7 +171,7 @@ export function updateCockpit(engine, icon) {
   // After the quota a big hand-in button waits at the thumb, before the abilities.
   var handBig = handIn ? '<button class="ck-hand ck-hand-big ck-coach" data-ck-hand2>Сдать смену</button>' : '';
   set(q('[data-ck-abilities]'), handBig + (!list.length && handIn ? '' : !list.length
-    ? '<div class="ck-text ck-empty" style="position:static;width:100%;height:100%">Способности появятся с Лабораторией</div>'
+    ? '<div class="ck-text ck-empty" style="position:static;width:100%;height:100%">Способности откроются позже, на базе</div>'
     : '<div class="ck-charge" aria-label="Заряд ' + charge + ' из ' + CHARGE_MAX + '"><small>Заряд ' + charge + '</small><i><u style="width:' + Math.round(100 * Math.min(1, charge / CHARGE_MAX)) + '%"></u></i></div>'
       + list.map(function (id) {
         var a = ABILITIES[id], ready = charge >= a.cost && engine.phase === 'idle', url = icon && icon('i-' + id + '.png');

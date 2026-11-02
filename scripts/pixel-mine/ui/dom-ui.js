@@ -14,6 +14,7 @@ import { INTERFACE_HTML, guideHtml, interfaceCss } from "./dom-markup.js";
 import { unlockAudio } from "../game/audio.js";
 import { setSelected } from "../game/board.js";
 import { describeCell } from "../game/hud.js";
+import { dailyCard } from "../model/daily-card.js";
 import { beginRound, chooseContract, contractRate, openCamp, requestLeave, resultNext, shareResult, shopAction } from "../game/round.js";
 import { tap } from "../game/turn.js";
 import { contractSetup } from "../model/contracts.js";
@@ -37,7 +38,7 @@ export function plural(n, one, few, many) {
 // each value under its own label so no figure has to be guessed.
 export function contractCard(number) {
   var setup = contractSetup('contract', number);
-  return [{ label: 'Шахта', value: setup.layerName }, { label: 'Поле', value: setup.dims.cols + '×' + setup.dims.rows }, { label: 'Топливо', value: String(setup.moves) }, { label: 'Норма', value: String(setup.quota) }];
+  return [{ label: 'Шахта', value: setup.layerName }, { label: 'Поле', value: setup.dims.cols + '×' + setup.dims.rows }, { label: 'Топливо', value: plural(setup.moves, 'ход', 'хода', 'ходов') }, { label: 'Норма', value: setup.quota + ' руды' }];
 }
 
 function escapeHtml(value) {
@@ -255,6 +256,7 @@ function setup(engine) {
     workshop: q('[data-workshop]'), contracts: q('[data-contracts]'), contractList: q('[data-contract-list]'),
     result: q('[data-result]'), resultTitle: q('[data-result-title]'), resultStars: q('[data-result-stars]'), resultRows: q('[data-result-rows]'),
     resultRadio: q('[data-result-radio]'), resultUnlock: q('[data-result-unlock]'), resultNext: q('[data-result-next]'), hud: q('[data-hud]'),
+    resultCard: q('[data-result-card]'), resultShare: q('[data-result-share]'), resultShareNote: q('[data-result-share-note]'),
     tabs: q('[data-tabs]'), income: q('[data-income]'), collect: q('[data-collect]'), basegrid: q('[data-basegrid]'), baseStatus: q('[data-base-status]'), basecell: q('[data-basecell]')
   };
   q('[data-tabs]').addEventListener('click', function (event) { var b = event.target.closest('button[data-tab]'); if (b) showTab(engine, b.getAttribute('data-tab')); });
@@ -318,6 +320,7 @@ function setup(engine) {
   q('[data-leave]').addEventListener('click', function () { requestLeave(engine); updateNativeInterface(engine); });
   q('[data-result-next]').addEventListener('click', function () { unlockAudio(engine); resultNext(engine); });
   q('[data-result-base]').addEventListener('click', function () { openCamp(engine); });
+  q('[data-result-share]').addEventListener('click', function () { shareResult(engine); });
   return root;
 }
 
@@ -339,6 +342,8 @@ function renderResult(engine, text) {
     rows.push(['Кредиты' + (last.replay ? ', повтор ' + Math.round(pay.rate * 100) + '%' : ''), '+' + last.credits, 'gold']);
     // Where the credits come from, so a bigger excess never looks like a smaller reward.
     rows.push([pay.base + ' за контракт, ' + pay.excessCredits + ' за излишек' + (pay.finds ? ', ' + pay.finds + ' за находки' : ''), '', 'note']);
+    // The stars say what they are for, so one star does not read as a telling-off.
+    rows.push(['Звёзды за топливо, которое осталось к норме', '', 'note']);
   } else {
     rows.push(['До нормы не хватило', Math.max(0, last.goal - last.score)]);
     if (last.credits) rows.push(['Кредиты за смену', '+' + last.credits, 'gold']);
@@ -354,6 +359,11 @@ function renderResult(engine, text) {
   var unlocks = last.unlocks && last.unlocks.length ? last.unlocks.join('. ') : '';
   text(n.resultUnlock, unlocks ? 'Новое: ' + unlocks.charAt(0).toLowerCase() + unlocks.slice(1) : '');
   var nextNumber = Math.min(CONTRACTS.length, engine.profile.completed + 1);
+  // The daily card is shown as it will be sent, so the player knows what a friend sees.
+  n.resultCard.hidden = n.resultShare.hidden = !daily;
+  text(n.resultCard, daily ? dailyCard(last).split('\n').slice(3, -2).join('\n') : '');
+  text(n.resultShareNote, daily ? engine.shareMessage || 'Квадрат на каждый ход: ⬛ пусто, 🟦 мало, 🟨 хорошо, ⭐ много, 💎 находка' : '');
+  n.resultNext.classList.toggle('primary', !daily);
   text(n.resultNext, daily ? 'Ещё раз' : last.won ? (last.contract >= CONTRACTS.length && !last.replay ? 'Сыграть финал снова' : 'Дальше: контракт ' + nextNumber) : 'Ещё раз');
 }
 
@@ -429,7 +439,7 @@ export function updateNativeInterface(engine) {
   });
   text(nodes.shop, engine.shopMessage || 'Два слота, у каждого модуля до двух уровней');
   nodes.share.disabled = !engine.lastResult;
-  root.querySelectorAll('[data-sound],[data-game-sound]').forEach(function (button) { text(button, engine.muted ? 'Включить звук' : 'Выключить звук'); button.setAttribute('aria-pressed', String(!engine.muted)); });
+  root.querySelectorAll('[data-sound],[data-game-sound]').forEach(function (button) { text(button, engine.muted ? 'Звук выкл' : 'Звук вкл'); button.setAttribute('aria-pressed', String(!engine.muted)); });
 
   // In the shift.
   if (!base && engine.dims) {

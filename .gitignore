@@ -18,3 +18,6 @@ assets/source/*
 !assets/source/fonts-game/
 !assets/source/hd/
 assets/source/hd/*.png
+
+# Display font of the lecture deck (EORA brand font, not redistributed)
+docs/presentation/fonts/

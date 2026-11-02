@@ -208,4 +208,19 @@ check('returning to base with selected ore safely clears selection', input.phase
   check('a friend redeems the gift once', G.redeemGift(friend, gift.code.toLowerCase()).ok && friend.collection.flask === 1 && !G.redeemGift(friend, gift.code).ok);
   check('a typo is caught', !G.redeemGift(friend, gift.code.slice(0, -1) + (gift.code.endsWith('A') ? 'B' : 'A')).ok);
 }
+{
+  const C = await import('../scripts/pixel-mine/model/daily-card.js');
+  const gains = C.moveGains([{ score: 0, finds: 0 }, { score: 40, finds: 0 }, { score: 40, finds: 0 }, { score: 300, finds: 1 }, { score: 450, finds: 1 }], 800, 1);
+  check('each move gets the ore it earned until the next move', gains.map(g => g.ore).join() === '40,0,260,150,350');
+  check('a find is shown on the move that dug it', gains.map(g => g.find).join() === 'false,false,true,false,false');
+  check('squares grade the move without showing the field', gains.map(C.moveSquare).join('') === '🟦⬛💎🟨⭐');
+  const card = C.dailyCard({ seed: 'PM2-2026-11-02', score: 800, finds: 1, gains: gains.concat(gains).concat(gains.slice(0, 2)) });
+  check('the card names the day, the result and the code', /Шахта дня 2026-11-02/.test(card) && /Добыто 800, находок 1/.test(card) && /Код PM2-2026-11-02/.test(card));
+  check('the card wraps squares ten to a line', card.split('\n').filter(line => /[🟦⬛💎🟨⭐]/u.test(line)).map(line => [...line].length).join() === '10,2');
+  const d = bootGame().__m3; d.beginRound('daily');
+  const dm = bestVisibleMove(d); d.tap(dm[0]); d.tap(dm[1]);
+  for (let i = 0; i < 600; i++) d.step(1 / 60);
+  d.moves = 0; d.finishRound();
+  check('a daily shift keeps one gain per spent move', d.lastResult.gains.length === 1 && d.lastResult.gains[0].ore === d.lastResult.score);
+}
 console.log('\n' + count + ' campaign checks passed');

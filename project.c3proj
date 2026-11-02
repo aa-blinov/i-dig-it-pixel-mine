@@ -246,6 +246,14 @@
 									}
 								},
 								{
+									"name": "daily-card.js",
+									"type": "application/javascript",
+									"sid": 12049138941249,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
 									"name": "economy.js",
 									"type": "application/javascript",
 									"sid": 178137526844753,

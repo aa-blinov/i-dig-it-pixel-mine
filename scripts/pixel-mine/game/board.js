@@ -111,6 +111,7 @@ export function startGame(engine) {
   engine.palette = setup.palette;
   layoutBoard(engine, setup.dims);
   engine.score = 0;
+  engine.moveMarks = [];
   var bonuses = engine.bonuses || { fuel: 0, cargo: 0, miners: 0 };
   engine.moves = setup.moves + bonuses.fuel;
   // A miner on an expedition is not in the shaft.

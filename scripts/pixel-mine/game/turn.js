@@ -311,7 +311,7 @@ export function step(engine, dt) {
     var combo = comboCells(colours, specials, engine.dims, swap.a, swap.b);
     if (combo) {
       // A swap with the drill, or of two specials, is always a move.
-      engine.moves--; engine.turns++; minerTurn(engine);
+      markMove(engine); engine.moves--; engine.turns++; minerTurn(engine);
       engine.swap = null;
       var spent = {}; spent[swap.a] = true; spent[swap.b] = true;
       showFired(engine, { index: swap.b, special: combo.kind === 'big-blast' ? CHARGE : DRILL });
@@ -320,7 +320,7 @@ export function step(engine, dt) {
       var match = resolveMatches(colours, engine.dims, swap, specials);
       if (match.runs.length) {
         // The move is only spent when the swap really makes a line.
-        engine.moves--; engine.turns++; minerTurn(engine);
+        markMove(engine); engine.moves--; engine.turns++; minerTurn(engine);
         engine.swap = null;
         clearMatch(engine, match);
       } else {
@@ -365,4 +365,9 @@ export function step(engine, dt) {
     }
     updateTexts(engine);
   }
+}
+
+// The score and finds before a spent move, for the daily card.
+function markMove(engine) {
+  (engine.moveMarks = engine.moveMarks || []).push({ score: engine.score, finds: engine.findCount || 0 });
 }

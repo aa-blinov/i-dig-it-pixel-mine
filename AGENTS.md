@@ -17,7 +17,7 @@
 | `scripts/pixel-mine/config.js` | Все числа: нормы, цены, поля, открытия | Агент, после симуляции баланса |
 | `tests/` | Тесты, эталонный прогон, симуляции | Агент |
 | `tools/` | Сборка, арт-пайплайн, страница проверки | Агент |
-| `docs/` | `gdd/` дизайн-документ, `research/` ресёрч и решения, `narrative/` лор, `art-bible/` арт и лицензии, `ux/` экраны, `qa/` тесты на игроках | Агент вместе с кодом |
+| `docs/` | `gdd/` дизайн-документ, `research/` ресёрч и решения, `narrative/` лор, `art-bible/` арт и лицензии, `ux/` экраны, `qa/` тесты на игроках, `presentation/` лекция: оригиналы слайдов, сценарий, PDF | Агент вместе с кодом |
 | `assets/` | `source/` исходники арта (скачанные паки не в git), `generated/` результат арт-пайплайна | Скилл art-pipeline |
 | `specs/`, `.specify/` | Спецификации фич и конституция Spec Kit | Агент по Spec Kit |
 | `build/` | Пакет `pixel-mine.c3p` и отчёты. Не в git | Генерируется |
@@ -35,6 +35,7 @@ node tools/sync-scripts.mjs       # регистрирует скрипты в p
 node tools/audit-project.mjs      # целостность проекта Construct
 node tools/pack.mjs               # собирает build/pixel-mine.c3p
 node tools/verify-pack.mjs        # проверяет, что в пакете только игра
+node tools/build-presentation.mjs --pdf --check   # слайды лекции в HTML и PDF, сверка со сценарием
 ```
 
 Проверка типов (ошибки TS6133 в `importsForEvents.js` и `FontFaceSet.add` ожидаемы):

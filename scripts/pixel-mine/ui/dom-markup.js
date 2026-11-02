@@ -102,6 +102,8 @@ export function interfaceCss() {
     s + ' .mine-rows dd{margin:0;text-align:right}',
     s + ' .mine-rows dd.gold{color:' + t.gold + '}',
     s + ' .mine-unlock{color:' + t.gold + '}',
+    s + ' .mine-card{background:' + t.deep + ';margin:8px 0;padding:10px 12px;font:16px/1.5 system-ui,sans-serif;white-space:pre-wrap;text-align:center}',
+    s + ' [data-result-share-note]:empty{display:none}',
     // Abilities in the toolbar.
     s + ' .mine-abilities{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}',
     s + ' .mine-abilities button{min-height:44px;padding:4px 10px 7px;font-size:15px}',
@@ -146,8 +148,8 @@ export var INTERFACE_HTML = ''
   + '<div data-panel="lab" hidden></div><div data-panel="collection" hidden></div><div data-panel="fleet" hidden></div>'
   + '<div data-panel="shift">'
   + '<section class="panel"><h1 id="mine-camp-title" tabindex="-1"></h1><ul class="chips" data-card></ul><p data-summary></p>'
-  + '<div class="mine-actions"><button class="primary" data-start></button><button data-daily data-after-daily>Шахта дня</button></div>'
-  + '<div data-contracts hidden><p class="muted">Пройденный контракт можно повторить: награда меньше, излишек и находки твои</p><div class="mine-chooser" data-contract-list></div></div></section>'
+  + '<div class="mine-actions"><button class="primary" data-start></button><button data-daily data-after-daily>Шахта дня: одно поле на всех</button></div>'
+  + '<div data-contracts hidden><p class="muted">Повторить пройденный контракт. Награда меньше, излишек и находки твои</p><div class="mine-chooser" data-contract-list></div></div></section>'
   + '<section class="panel mine-radio" data-radio hidden aria-label="Рация"><h2>Рация</h2><div data-radio-lines></div></section>'
   + '<p class="muted" data-collection></p>'
   + '<section class="panel" data-workshop hidden><h2 data-slots></h2><p class="muted">Модули ставятся на корабль перед сменой. Кредиты приходят за каждую смену и за руду сверх нормы</p><div data-modules></div><p role="status" data-shop-status></p></section>'
@@ -168,7 +170,8 @@ export var INTERFACE_HTML = ''
   + '<div class="mine-result-back" data-result hidden><section class="mine-result panel" role="dialog" aria-modal="true" aria-labelledby="mine-result-title">'
   + '<h2 id="mine-result-title" tabindex="-1" data-result-title></h2><p class="mine-stars" data-result-stars></p><dl class="mine-rows" data-result-rows></dl>'
   + '<div class="mine-radio" data-result-radio hidden></div><p class="mine-unlock" data-result-unlock hidden></p>'
-  + '<div class="mine-actions"><button class="primary" data-result-next></button><button data-result-base>На базу</button></div></section></div>'
+  + '<pre class="mine-card" data-result-card hidden></pre><p class="muted" data-result-share-note role="status"></p>'
+  + '<div class="mine-actions"><button class="primary" data-result-share hidden>Поделиться итогом</button><button class="primary" data-result-next></button><button data-result-base>На базу</button></div></section></div>'
   + '<p class="mine-sr" role="status" aria-live="polite" data-announcement></p>';
 
 export function guideHtml() {

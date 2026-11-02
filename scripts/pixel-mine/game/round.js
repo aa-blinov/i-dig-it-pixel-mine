@@ -8,6 +8,7 @@ import { playSfx } from "./audio.js";
 import { disposeRound, startGame } from "./board.js";
 import { contractSetup } from "../model/contracts.js";
 import { dailyCode, seededRandom, validChallengeCode } from "../model/challenge.js";
+import { dailyCard, moveGains } from "../model/daily-card.js";
 import { buyModule, equipModule, saveProfile } from "../model/profile.js";
 import { updateInterface } from "../ui/canvas-ui.js";
 
@@ -70,6 +71,7 @@ export function finishRound(engine) {
   var message = daily ? 'Шахта дня: добыто ' + engine.score + ', лучший результат ' + engine.profile.dailyBest[engine.seed.slice(4)] + '. Код этой шахты можно отправить другу'
     : won ? 'Контракт ' + engine.contract + ' выполнен, мастерство ' + stars + ' из 3. Норма ' + engine.goal + ', сверх нормы ' + pay.excess + ' руды. Награда ' + reward + ' кр.' + (replay ? ' Это повтор, награда ' + Math.round(pay.rate * 100) + '%.' : '') + unlockNote(before, engine.profile.completed)
     : 'Топливо закончилось: до цели не хватило ' + Math.max(0, engine.goal - engine.score) + ' руды. ' + (reward ? 'За смену начислено ' + reward + ' кр. ' : '') + 'Контракт можно начать снова, находки и кредиты остаются';
+  if (daily) { engine.lastResult.gains = moveGains(engine.moveMarks, engine.score, engine.findCount); engine.shareMessage = ''; }
   engine.lastResult.unlocks = unlockList(before, engine.profile.completed);
   engine.lastResult.replay = replay;
   saveProfile(engine);
@@ -129,6 +131,7 @@ export function shopAction(engine, index, equip) {
 export function shareResult(engine) {
   var result = engine.lastResult;
   if (!result) { engine.shopMessage = 'Сначала заверши смену'; updateInterface(engine); return; }
+  if (result.mode === 'daily') { shareDaily(engine, result); return; }
   var text = 'I Dig It: Pixel Mine v2\n' + (result.mode === 'daily' ? 'Шахта дня, одинаковые условия' : 'Контракт ' + result.contract + ', ' + (result.won ? 'выполнен' : 'попытка'))
     + '\nДобыча: ' + result.score + '\nНаходки: ' + result.finds
     + (result.mode === 'daily' ? '\nКод: ' + result.seed : '\nМастерство: ' + result.stars + '/3. Шахта дня: PM2-' + dailyCode())
@@ -138,9 +141,34 @@ export function shareResult(engine) {
   else { engine.shopMessage = shareFallback(result); updateInterface(engine); }
 }
 
-// When the clipboard is not available, show the one thing a friend can use: a mine code.
+// The daily card goes to the phone's share sheet, or to the clipboard where
+// there is none. Closing the sheet is not an error and says nothing.
+function shareDaily(engine, result) {
+  var text = engine.shareText = dailyCard(result);
+  function done(message) { engine.shopMessage = engine.shareMessage = message; updateInterface(engine); }
+  function copy() {
+    if (globalThis.navigator && navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done('Итог скопирован, вставь его в чат'); }).catch(function () { done(legacyCopy(text) ? 'Итог скопирован, вставь его в чат' : shareFallback(result)); });
+    else done(legacyCopy(text) ? 'Итог скопирован, вставь его в чат' : shareFallback(result));
+  }
+  if (globalThis.navigator && navigator.share) navigator.share({ text: text }).then(function () { done('Итог отправлен'); }).catch(function (error) { if (!error || error.name !== 'AbortError') copy(); });
+  else copy();
+}
+
+// Older WebViews have no clipboard API but still copy a selected text field.
+function legacyCopy(text) {
+  if (!globalThis.document || !document.body || !document.execCommand) return false;
+  var area = document.createElement('textarea');
+  area.value = text; area.setAttribute('readonly', ''); area.style.position = 'fixed'; area.style.opacity = '0';
+  document.body.appendChild(area); area.select();
+  var ok = false;
+  try { ok = document.execCommand('copy'); } catch (_) { ok = false; }
+  area.remove();
+  return ok;
+}
+
+// When nothing can be copied, show the one thing a friend can use: a mine code, worded as a step, not a failure.
 function shareFallback(result) {
-  return result.mode === 'daily' ? 'Не удалось скопировать. Код шахты для друга: ' + result.seed : 'Не удалось скопировать. Позови друга в шахту дня: PM2-' + dailyCode();
+  return result.mode === 'daily' ? 'Отправь другу код ' + result.seed + ', и он сыграет это же поле' : 'Позови друга в шахту дня, код PM2-' + dailyCode();
 }
 
 export function setCampVisible(engine, visible) {
