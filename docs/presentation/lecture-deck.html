@@ -1,0 +1,1207 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>Агентная разработка: игра одним человеком</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+<style>@font-face{font-family:"Grandis Extended";src:url(fonts/GrandisExtended-Medium.ttf)}
+@page{size:1920px 1080px;margin:0}
+*{box-sizing:border-box;margin:0}
+body{background:#0b0b0c}
+section{position:relative;width:1920px;height:1080px;overflow:hidden;break-after:page;color:#F2F4FA;font-family:Inter,Arial,sans-serif}
+h1,h2,h3{font-weight:600}
+p,h1,h2,h3{overflow-wrap:break-word}
+table{border-collapse:collapse;width:100%}
+th,td{padding:12px 16px;text-align:left;vertical-align:top;line-height:1.35;border-bottom:1px solid rgba(255,255,255,.12)}
+</style></head><body>
+<section id="cover" data-transition="fade" style="background:#141415;color:#F2F4FA;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:space-between">
+<p style="font-size:32px;color:#FFCD2E;font-weight:600">Лекция для геймдева</p>
+<div style="display:flex;flex-direction:column;gap:40px">
+<h1 style="font-family:'Grandis Extended', 'Inter', sans-serif;font-size:96px;font-weight:500;line-height:1.1">Агентная<br>разработка</h1>
+<p style="font-size:44px;line-height:1.4;color:#C9CBD2;width:1300px">Как один человек с агентом собрал мобильную игру и что из этого взять в свою команду</p>
+</div>
+
+</section>
+
+<section id="hook" data-transition="fade" style="background:#141415;color:#F2F4FA;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<img src="assets/900f6521d46ab827e935fabff3909268.jpg" alt="Экран игры с надписью Трюм полон" style="position:absolute;left:1420px;top:96px;width:410px;height:888px;object-fit:contain;border-radius:24px">
+<p style="font-size:32px;color:#FFCD2E;font-weight:600">Начнём с истории</p>
+<h2 style="font-family:'Grandis Extended', 'Inter', sans-serif;font-size:72px;font-weight:500;line-height:1.15;width:1180px">Пять из пяти новичков испугались одной надписи</h2>
+<p style="font-size:40px;line-height:1.4;width:1100px">«Трюм полон». Как думаете, что они решили?</p>
+<p style="position:absolute;left:128px;top:700px;width:1150px;font-size:36px;line-height:1.4;background:#FFCD2E;color:#232429;padding:32px 40px;border-radius:24px" data-build-in="rise">Что у них что-то отобрали. На деле добыча уже засчитана. Нашёл это не человек, а пять агентов, которые играли за новичков</p>
+
+</section>
+
+<section id="game" data-transition="fade" style="background:radial-gradient(circle at 70% 50%, #4A3A12 0%, #1E1A12 45%, #141415 80%);color:#F2F4FA;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:48px">
+<img src="assets/aec6d9f5982b028ebc0ba2bd0abfcbb3.png" alt="" style="position:absolute;left:820px;top:96px;width:180px;height:180px;object-fit:contain;transform:rotate(-18deg)" data-build-in="pop 3">
+<img src="assets/fd42e875eae78b6b770e01003728c67a.jpg" alt="Смена в шахте: поле с рудами" style="position:absolute;left:960px;top:150px;width:370px;height:800px;object-fit:contain;border-radius:28px;transform:rotate(-7deg);box-shadow:0 40px 120px rgba(0,0,0,0.6)" data-build-in="rise 1">
+<img src="assets/3fd729e250bdf787f06f9734df3789a1.jpg" alt="Норма выполнена, кнопка Сдать смену" style="position:absolute;left:1340px;top:120px;width:370px;height:800px;object-fit:contain;border-radius:28px;transform:rotate(6deg);box-shadow:0 40px 120px rgba(0,0,0,0.6)" data-build-in="rise 2">
+<img src="assets/c2302e7d36a192f7c0054cce2a85a6b2.png" alt="" style="position:absolute;left:820px;top:720px;width:240px;height:240px;object-fit:contain;transform:rotate(-12deg)" data-build-in="pop 4">
+<img src="assets/9b2dbc244fe438f4ef109fd9df1e8f9e.png" alt="" style="position:absolute;left:1600px;top:64px;width:200px;height:200px;object-fit:contain;transform:rotate(16deg)" data-build-in="pop 5">
+<img src="assets/908ad3a33ce82b9a6aae53411d36304d.png" alt="" style="position:absolute;left:1620px;top:760px;width:200px;height:200px;object-fit:contain;transform:rotate(-8deg)" data-build-in="pop 6">
+<img src="assets/b2dd729038afa4f938fd0684dfbae050.png" alt="" style="position:absolute;left:1240px;top:850px;width:150px;height:150px;object-fit:contain;transform:rotate(22deg)" data-build-in="pop 7">
+<p style="font-size:28px;color:#FFCD2E;font-weight:600;width:620px">I Dig It: Pixel Mine</p>
+<h2 style="font-family:'Grandis Extended', 'Inter', sans-serif;font-size:72px;font-weight:500;line-height:1.15;width:640px">Копай. Собирай. Сдавай смену</h2>
+<p style="font-size:30px;line-height:1.4;color:#D9D2C0;width:600px">Три в ряд про шахту в Техасе 1889 года. Двенадцать контрактов, база, флот и сюжет</p>
+<p style="font-size:34px;line-height:1.4;color:#232429;background:#FFCD2E;padding:24px 32px;border-radius:24px;width:620px"><b>Прототип за вечер.</b> Играбельное поле с агентом собирается за один вечер, а не за спринт</p>
+
+</section>
+
+<section id="levels" data-transition="fade" style="background:#232426;color:#F2F4FA;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'Grandis Extended', 'Inter', sans-serif;font-size:64px;font-weight:500;line-height:1.15">Три уровня работы с ИИ</h2>
+<div style="display:flex;gap:24px;align-items:stretch;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#141415;padding:44px;border-radius:32px">
+
+<svg style="color:#9A9BA3;width:96px;height:96px;display:block;flex:none"
+  class="lucide lucide-message-circle"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+</svg>
+
+<p style="font-size:26px;color:#9A9BA3">Вчера</p>
+<h3 style="font-size:52px;font-weight:700">Чат</h3>
+<p style="font-size:30px;line-height:1.4;color:#C9CBD2">Умный друг в телефоне: советует, но посуду не моет</p>
+</div>
+<div style="background:#4C4D53;width:64px;height:40px;align-self:center;flex:none;clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 100%,60% 70%,0 70%)"></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#141415;padding:44px;border-radius:32px">
+
+<svg style="color:#F2F4FA;width:96px;height:96px;display:block;flex:none"
+  class="lucide lucide-wrench"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+</svg>
+
+<p style="font-size:26px;color:#9A9BA3">Сегодня</p>
+<h3 style="font-size:52px;font-weight:700">Агент</h3>
+<p style="font-size:30px;line-height:1.4;color:#C9CBD2">Стажёр с доступом ко всему: делает сам, иногда уверенно не то</p>
+</div>
+<div style="background:#FFCD2E;width:64px;height:40px;align-self:center;flex:none;clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 100%,60% 70%,0 70%)"></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#FFCD2E;color:#232429;padding:44px;border-radius:32px">
+
+<svg style="color:#232429;width:96px;height:96px;display:block;flex:none"
+  class="lucide lucide-activity"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
+</svg>
+
+<p style="font-size:26px;font-weight:600">Сейчас</p>
+<h3 style="font-size:52px;font-weight:700">Петля</h3>
+<p style="font-size:30px;line-height:1.4">Работает по кругу с проверками, пока не выполнит условия</p>
+</div>
+</div>
+
+</section>
+
+<section id="chatagent" data-transition="fade" style="background:#141415;color:#F2F4FA;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'Grandis Extended', 'Inter', sans-serif;font-size:64px;font-weight:500;line-height:1.15">Одна задача, два способа</h2>
+<p style="font-size:32px;color:#C9CBD2">«Клетки на телефоне мелкие, палец промахивается»</p>
+<div style="display:flex;gap:40px">
+<div style="flex:1;background:#232426;border-radius:32px;padding:40px;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;gap:20px;align-items:center">
+<svg style="color:#9A9BA3;width:56px;height:56px;display:block;flex:none"
+  class="lucide lucide-message-circle"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+</svg>
+<h3 style="font-size:40px;font-weight:700">Чат</h3></div>
+<p style="font-size:28px;line-height:1.4;color:#C9CBD2">Даёт кусок кода и совет</p>
+<p style="font-size:28px;line-height:1.4;color:#C9CBD2">Вы ищете, куда его вставить</p>
+<p style="font-size:28px;line-height:1.4;color:#C9CBD2">Сами собираете и запускаете</p>
+<p style="font-size:28px;line-height:1.4;color:#C9CBD2">Сломалось что-то рядом. Снова в чат</p>
+<p style="font-size:28px;font-weight:700;color:#9A9BA3">Работаете вы, чат подсказывает</p>
+</div>
+<div style="flex:1;background:#FFCD2E;color:#232429;border-radius:32px;padding:40px;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;gap:20px;align-items:center">
+<svg style="color:#232429;width:56px;height:56px;display:block;flex:none"
+  class="lucide lucide-wrench"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+</svg>
+<h3 style="font-size:40px;font-weight:700">Агент</h3></div>
+<p style="font-size:28px;line-height:1.4">Сам находит нужный файл и меняет</p>
+<p style="font-size:28px;line-height:1.4">Прогоняет все тесты игры</p>
+<p style="font-size:28px;line-height:1.4">Открывает её на девяти размерах экрана</p>
+<p style="font-size:28px;line-height:1.4">Присылает скриншоты и что поменял</p>
+<p style="font-size:28px;font-weight:700">Работает агент, вы принимаете</p>
+</div>
+</div>
+
+</section>
+
+<section id="whenchat" data-transition="fade" style="background:#232426;color:#F2F4FA;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'Grandis Extended', 'Inter', sans-serif;font-size:64px;font-weight:500;line-height:1.15">Когда чат, а когда агент</h2>
+<div style="display:flex;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:32px;font-weight:700;color:#9A9BA3">Хватит чата</p>
+<p style="font-size:30px;line-height:1.4;border-left:4px solid #4C4D53;padding:0 0 0 24px">Один вопрос, один ответ</p>
+<p style="font-size:30px;line-height:1.4;border-left:4px solid #4C4D53;padding:0 0 0 24px">Идеи и мозговой штурм</p>
+<p style="font-size:30px;line-height:1.4;border-left:4px solid #4C4D53;padding:0 0 0 24px">Переписать письмо или абзац</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:32px;font-weight:700;color:#FFCD2E">Нужен агент</p>
+<p style="font-size:30px;line-height:1.4;border-left:4px solid #FFCD2E;padding:0 0 0 24px">Много шагов подряд</p>
+<p style="font-size:30px;line-height:1.4;border-left:4px solid #FFCD2E;padding:0 0 0 24px">Работа в файлах, программах, браузере</p>
+<p style="font-size:30px;line-height:1.4;border-left:4px solid #FFCD2E;padding:0 0 0 24px">Результат можно проверить</p>
+</div>
+</div>
+<p style="font-size:36px;line-height:1.4;background:#141415;padding:32px 40px;border-radius:24px">Простой тест: если после ответа чата вы ещё полчаса делаете всё руками, это задача для агента</p>
+
+</section>
+
+<section id="loop" data-transition="fade" style="display:flex; flex-direction:column; gap:48px; padding:128px; background:#141415">
+  <svg xmlns="http://www.w3.org/2000/svg" aria-label="Круг из шести шагов" viewBox="0 0 640 640" style="position:absolute; top:260px; left:940px; width:640px; height:640px"><circle cx="320" cy="320" r="290" fill="none" stroke="#FFCD2E" stroke-width="6" stroke-dasharray="18 14"/><circle cx="320" cy="320" r="150" fill="#232426"/></svg>
+  <h2 style="width:760px; font-family:'Grandis Extended', sans-serif; font-size:64px; font-weight:500; line-height:1.15; color:#f2f4fa">Петля одной задачи</h2>
+  <p style="width:680px; font-family:Inter, Arial, sans-serif; font-size:32px; line-height:1.4; color:#c9cbd2">Так в Pixel Mine идёт любая правка, от запятой до новой системы</p>
+  <p style="width:680px; font-family:Inter, Arial, sans-serif; font-size:32px; line-height:1.4; color:#c9cbd2"><span style="color:#ffcd2e">Не прошло?</span> Ещё круг. Агент чинит и проверяет сам</p>
+  <p style="width:680px; font-family:Inter, Arial, sans-serif; font-size:32px; line-height:1.4; color:#c9cbd2"><span style="color:#ffcd2e">Выход</span> только по условиям готовности, записанным заранее</p>
+  <p style="position:absolute; top:507.23px; left:1110px; width:300px; font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:700; line-height:1.4; text-align:center; color:#f2f4fa">Как стиральная машина: пока не постиралось, крутим ещё</p>
+  <p data-build-in="pop 1" style="position:absolute; top:250px; left:1145px; width:230px; padding:20px; font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:700; text-align:center; color:#232429; background:#ffcd2e; border-radius:256px">1 Понять</p>
+  <p data-build-in="pop 2" style="position:absolute; top:395px; left:1396px; width:230px; padding:20px; font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:700; text-align:center; color:#232429; background:#ffcd2e; border-radius:256px">2 Тест</p>
+  <p data-build-in="pop 3" style="position:absolute; top:685px; left:1396px; width:230px; padding:20px; font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:700; text-align:center; color:#232429; background:#ffcd2e; border-radius:256px">3 Изменить</p>
+  <p data-build-in="pop 4" style="position:absolute; top:830px; left:1145px; width:230px; padding:20px; font-family:Inter, sans-serif; font-size:28px; font-weight:700; line-height:1; text-align:center; color:#232429; background:#ffcd2e; border-radius:256px">4 Проверить</p>
+  <p data-build-in="pop 5" style="position:absolute; top:685px; left:894px; width:230px; padding:20px; font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:700; text-align:center; color:#232429; background:#ffcd2e; border-radius:256px">5 Показать</p>
+  <p data-build-in="pop 6" style="position:absolute; top:395px; left:894px; width:230px; padding:20px; font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:700; text-align:center; color:#232429; background:#ffcd2e; border-radius:256px">6 Записать</p>
+  
+</section>
+
+<section id="blocks" data-transition="fade" style="background:#141415;color:#F2F4FA;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'Grandis Extended', 'Inter', sans-serif;font-size:64px;font-weight:500;line-height:1.15">Из чего собран агент</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:24px">
+<div style="background:#232426;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:16px"><div style="background:#FFCD2E;border-radius:1000px;width:88px;height:88px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#232429;width:48px;height:48px;display:block;flex:none"
+  class="lucide lucide-book"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+</svg>
+</div><h3 style="font-size:34px;font-weight:700">Правила</h3><p style="font-size:26px;line-height:1.4;color:#C9CBD2">Памятка новичку в команде</p></div>
+<div style="background:#232426;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:16px"><div style="background:#FFCD2E;border-radius:1000px;width:88px;height:88px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#232429;width:48px;height:48px;display:block;flex:none"
+  class="lucide lucide-lightbulb"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+  <path d="M9 18h6" />
+  <path d="M10 22h4" />
+</svg>
+</div><h3 style="font-size:34px;font-weight:700">Скилл</h3><p style="font-size:26px;line-height:1.4;color:#C9CBD2">Рецепт задачи и когда она готова</p></div>
+<div style="background:#232426;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:16px"><div style="background:#FFCD2E;border-radius:1000px;width:88px;height:88px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#232429;width:48px;height:48px;display:block;flex:none"
+  class="lucide lucide-hammer"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9" />
+  <path d="m18 15 4-4" />
+  <path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5" />
+</svg>
+</div><h3 style="font-size:34px;font-weight:700">Инструмент</h3><p style="font-size:26px;line-height:1.4;color:#C9CBD2">Руки: файл, тест, браузер</p></div>
+<div style="background:#232426;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:16px"><div style="background:#FFCD2E;border-radius:1000px;width:88px;height:88px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#232429;width:48px;height:48px;display:block;flex:none"
+  class="lucide lucide-code"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <polyline points="16 18 22 12 16 6" />
+  <polyline points="8 6 2 12 8 18" />
+</svg>
+</div><h3 style="font-size:34px;font-weight:700">CLI</h3><p style="font-size:26px;line-height:1.4;color:#C9CBD2">Команды в терминале: git, сборка, тесты одной строкой</p></div>
+<div style="background:#232426;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:16px"><div style="background:#FFCD2E;border-radius:1000px;width:88px;height:88px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#232429;width:48px;height:48px;display:block;flex:none"
+  class="lucide lucide-link"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+</div><h3 style="font-size:34px;font-weight:700">MCP</h3><p style="font-size:26px;line-height:1.4;color:#C9CBD2">Розетка для Construct, Figma, почты</p></div>
+<div style="background:#232426;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:16px"><div style="background:#FFCD2E;border-radius:1000px;width:88px;height:88px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#232429;width:48px;height:48px;display:block;flex:none"
+  class="lucide lucide-database"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" />
+</svg>
+</div><h3 style="font-size:34px;font-weight:700">Плагин</h3><p style="font-size:26px;line-height:1.4;color:#C9CBD2">Набор в коробке одним пакетом</p></div>
+<div style="background:#232426;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:16px"><div style="background:#FFCD2E;border-radius:1000px;width:88px;height:88px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#232429;width:48px;height:48px;display:block;flex:none"
+  class="lucide lucide-lock"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+</svg>
+</div><h3 style="font-size:34px;font-weight:700">Хук</h3><p style="font-size:26px;line-height:1.4;color:#C9CBD2">Друг, который отберёт телефон в два ночи</p></div>
+<div style="background:#FFCD2E;color:#232429;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:16px"><div style="background:#232429;border-radius:1000px;width:88px;height:88px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#FFCD2E;width:48px;height:48px;display:block;flex:none"
+  class="lucide lucide-activity"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
+</svg>
+</div><h3 style="font-size:34px;font-weight:700">Петля</h3><p style="font-size:26px;line-height:1.4">Собирает всё это в работу до результата</p></div>
+</div>
+
+</section>
+
+<section id="life" data-transition="fade" style="background:#232426;color:#F2F4FA;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:32px;color:#FFCD2E;font-weight:600">В быту</p>
+<div style="display:flex;gap:40px;align-items:center">
+
+<svg style="color:#FFCD2E;width:120px;height:120px;display:block;flex:none"
+  class="lucide lucide-message-circle"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+</svg>
+
+<p style="font-family:'Grandis Extended', 'Inter', sans-serif;font-size:56px;line-height:1.2;background:#141415;padding:36px 48px;border-radius:40px 40px 40px 0">Найди мне отпуск в мае</p>
+</div>
+<div style="display:flex;align-items:center;gap:16px">
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="background:#141415;border:3px solid #FFCD2E;border-radius:1000px;width:150px;height:150px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#FFCD2E;width:72px;height:72px;display:block;flex:none"
+  class="lucide lucide-book"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+</svg>
+</div><p style="font-size:28px;text-align:center;line-height:1.4">Бюджет, море, без пересадок</p></div>
+<div style="background:#4C4D53;width:56px;height:32px;flex:none;clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 100%,60% 70%,0 70%)"></div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="background:#141415;border:3px solid #FFCD2E;border-radius:1000px;width:150px;height:150px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#FFCD2E;width:72px;height:72px;display:block;flex:none"
+  class="lucide lucide-search"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8" />
+  <path d="m21 21-4.3-4.3" />
+</svg>
+</div><p style="font-size:28px;text-align:center;line-height:1.4">Сравнил билеты и отели</p></div>
+<div style="background:#4C4D53;width:56px;height:32px;flex:none;clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 100%,60% 70%,0 70%)"></div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="background:#141415;border:3px solid #FFCD2E;border-radius:1000px;width:150px;height:150px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#FFCD2E;width:72px;height:72px;display:block;flex:none"
+  class="lucide lucide-clock"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <polyline points="12 6 12 12 16 14" />
+</svg>
+</div><p style="font-size:28px;text-align:center;line-height:1.4">Сверил с календарём</p></div>
+<div style="background:#4C4D53;width:56px;height:32px;flex:none;clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 100%,60% 70%,0 70%)"></div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="background:#FFCD2E;border-radius:1000px;width:150px;height:150px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#232429;width:72px;height:72px;display:block;flex:none"
+  class="lucide lucide-thumbs-up"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 10v12" />
+  <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
+</svg>
+</div><p style="font-size:28px;text-align:center;line-height:1.4">Ждёт вашего «да». Тур в Воркуту сам не купит</p></div>
+</div>
+
+</section>
+
+<section id="dev" data-transition="fade" style="background:#141415;color:#F2F4FA;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:32px;color:#FFCD2E;font-weight:600">В разработке</p>
+<h2 style="font-family:'Grandis Extended', 'Inter', sans-serif;font-size:64px;font-weight:500;line-height:1.15">«Первый контракт слишком сложный»</h2>
+<div style="display:flex;gap:0px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;border-top:6px solid #FFCD2E;padding:32px 24px 0 0">
+<svg style="color:#FFCD2E;width:72px;height:72px;display:block;flex:none"
+  class="lucide lucide-search"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8" />
+  <path d="m21 21-4.3-4.3" />
+</svg>
+<h3 style="font-size:34px;font-weight:700">Найти</h3><p style="font-size:26px;line-height:1.4;color:#C9CBD2">Норма в одном файле с числами</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;border-top:6px solid #FFCD2E;padding:32px 24px 0 0">
+<svg style="color:#FFCD2E;width:72px;height:72px;display:block;flex:none"
+  class="lucide lucide-chart-column"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+  <path d="M18 17V9" />
+  <path d="M13 17V5" />
+  <path d="M8 17v-3" />
+</svg>
+<h3 style="font-size:34px;font-weight:700">Посчитать</h3><p style="font-size:26px;line-height:1.4;color:#C9CBD2">Бот играет тысячи раз, даёт процент</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;border-top:6px solid #FFCD2E;padding:32px 24px 0 0">
+<svg style="color:#FFCD2E;width:72px;height:72px;display:block;flex:none"
+  class="lucide lucide-circle-check"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="m9 12 2 2 4-4" />
+</svg>
+<h3 style="font-size:34px;font-weight:700">Проверить</h3><p style="font-size:26px;line-height:1.4;color:#C9CBD2">Тесты и сборка, ничего не сломано</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;border-top:6px solid #FFCD2E;padding:32px 24px 0 0">
+<svg style="color:#FFCD2E;width:72px;height:72px;display:block;flex:none"
+  class="lucide lucide-play"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <polygon points="6 3 20 12 6 21 6 3" />
+</svg>
+<h3 style="font-size:34px;font-weight:700">Сыграть</h3><p style="font-size:26px;line-height:1.4;color:#C9CBD2">Бот проходит смену в движке</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;border-top:6px solid #FFCD2E;padding:32px 0 0 0">
+<svg style="color:#FFCD2E;width:72px;height:72px;display:block;flex:none"
+  class="lucide lucide-book"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+</svg>
+<h3 style="font-size:34px;font-weight:700">Записать</h3><p style="font-size:26px;line-height:1.4;color:#C9CBD2">Что поменялось и почему</p></div>
+</div>
+
+</section>
+
+<section id="roles" data-transition="fade" style="background:#141415;color:#F2F4FA;font-family:'Inter', Arial, sans-serif;padding:128px;display:grid;grid-template-columns:560px 1fr;gap:48px;align-items:center">
+<div style="display:flex;flex-direction:column;gap:32px">
+<h2 style="font-family:'Grandis Extended', 'Inter', sans-serif;font-size:56px;font-weight:500;line-height:1.15">Что отдать агенту в вашей роли</h2>
+<p style="font-size:30px;line-height:1.4;color:#C9CBD2">Кто узнал свою рутину?</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:0px">
+<div style="display:flex;gap:32px;align-items:center;padding:20px 0;border-bottom:1px solid #3A3B40">
+<svg style="color:#FFCD2E;width:52px;height:52px;display:block;flex:none"
+  class="lucide lucide-chart-column"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+  <path d="M18 17V9" />
+  <path d="M13 17V5" />
+  <path d="M8 17v-3" />
+</svg>
+<p style="font-size:30px;font-weight:700;width:260px">Геймдизайн</p><p style="font-size:28px;color:#C9CBD2;flex:1">Прогнать уровень ботом тысячу раз</p></div>
+<div style="display:flex;gap:32px;align-items:center;padding:20px 0;border-bottom:1px solid #3A3B40">
+<svg style="color:#FFCD2E;width:52px;height:52px;display:block;flex:none"
+  class="lucide lucide-star"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+</svg>
+<p style="font-size:30px;font-weight:700;width:260px">Арт</p><p style="font-size:28px;color:#C9CBD2;flex:1">Разложить ассеты, проверить лицензии</p></div>
+<div style="display:flex;gap:32px;align-items:center;padding:20px 0;border-bottom:1px solid #3A3B40">
+<svg style="color:#FFCD2E;width:52px;height:52px;display:block;flex:none"
+  class="lucide lucide-badge-check"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
+  <path d="m9 12 2 2 4-4" />
+</svg>
+<p style="font-size:30px;font-weight:700;width:260px">QA</p><p style="font-size:28px;color:#C9CBD2;flex:1">Пройти экраны на всех телефонах</p></div>
+<div style="display:flex;gap:32px;align-items:center;padding:20px 0;border-bottom:1px solid #3A3B40">
+<svg style="color:#FFCD2E;width:52px;height:52px;display:block;flex:none"
+  class="lucide lucide-book"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+</svg>
+<p style="font-size:30px;font-weight:700;width:260px">Нарратив</p><p style="font-size:28px;color:#C9CBD2;flex:1">Вычитать тексты по правилам стиля</p></div>
+<div style="display:flex;gap:32px;align-items:center;padding:20px 0;border-bottom:1px solid #3A3B40">
+<svg style="color:#FFCD2E;width:52px;height:52px;display:block;flex:none"
+  class="lucide lucide-users"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+</svg>
+<p style="font-size:30px;font-weight:700;width:260px">UX</p><p style="font-size:28px;color:#C9CBD2;flex:1">Симулировать новичков до живого теста</p></div>
+<div style="display:flex;gap:32px;align-items:center;padding:20px 0">
+<svg style="color:#FFCD2E;width:52px;height:52px;display:block;flex:none"
+  class="lucide lucide-clock"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <polyline points="12 6 12 12 16 14" />
+</svg>
+<p style="font-size:30px;font-weight:700;width:260px">Продюсер</p><p style="font-size:28px;color:#C9CBD2;flex:1">Сводка: сделано, сломано, ждёт решения</p></div>
+</div>
+
+</section>
+
+<section id="ladder" data-transition="fade" style="display:flex; flex-direction:column; padding:128px; background:#141415">
+  <h2 style="font-family:'Grandis Extended', sans-serif; font-size:64px; font-weight:500; line-height:1.15; color:#f2f4fa">Лестница любого проекта</h2>
+  <p style="position:absolute; top:240px; left:128px; width:820px; font-family:Inter, Arial, sans-serif; font-size:32px; line-height:1.4; color:#c9cbd2">Семь ступеней. <span style="color:#ffcd2e">Нашли проблему?</span> Возвращаемся на ту ступень, где она родилась</p>
+  <div style="position:absolute; top:780px; left:128px; width:220px; height:140px; display:flex; flex-direction:column; gap:4px; padding:20px; background:#2e2f33; border-radius:16px 16px 0 0">
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#ffcd2e">1</p>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#f2f4fa">Задача</p>
+  </div>
+  <div style="position:absolute; top:690px; left:369px; width:220px; height:230px; display:flex; flex-direction:column; gap:4px; padding:20px; background:#34353a; border-radius:16px 16px 0 0">
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#ffcd2e">2</p>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#f2f4fa">Ресёрч</p>
+  </div>
+  <div style="position:absolute; top:600px; left:610px; width:220px; height:320px; display:flex; flex-direction:column; gap:4px; padding:20px; background:#3a3b40; border-radius:16px 16px 0 0">
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#ffcd2e">3</p>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#f2f4fa">Процесс</p>
+  </div>
+  <div style="position:absolute; top:510px; left:851px; width:220px; height:410px; display:flex; flex-direction:column; gap:4px; padding:20px; background:#404146; border-radius:16px 16px 0 0">
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#ffcd2e">4</p>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#f2f4fa">Прототип</p>
+  </div>
+  <div style="position:absolute; top:420px; left:1092px; width:220px; height:500px; display:flex; flex-direction:column; gap:4px; padding:20px; background:#46474d; border-radius:16px 16px 0 0">
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#ffcd2e">5</p>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#f2f4fa">MVP</p>
+  </div>
+  <div style="position:absolute; top:330px; left:1333px; width:220px; height:590px; display:flex; flex-direction:column; gap:4px; padding:20px; background:#4c4d53; border-radius:16px 16px 0 0">
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#ffcd2e">6</p>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#f2f4fa">Ревью</p>
+  </div>
+  <div style="position:absolute; top:240px; left:1574px; width:218px; height:680px; display:flex; flex-direction:column; gap:4px; padding:20px; background:#ffcd2e; border-radius:16px 16px 0 0">
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#232429">7</p>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:700; color:#232429">Запуск</p>
+  </div>
+  <svg style="position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none" viewBox="0 0 1920 1080"><defs><marker id="h1560222" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#ffcd2e" stroke-width="1.5"/></marker></defs><line x1="1560" y1="222" x2="108" y2="767" stroke="#ffcd2e" stroke-width="4" stroke-dasharray="16 12" marker-end="url(#h1560222)" marker-start="url(#h1560222)"/></svg>
+  
+</section>
+
+<section id="mine" data-transition="fade" style="display:flex; flex-direction:column; gap:48px; padding:128px; background:#232426">
+  <h2 style="font-family:'Grandis Extended', sans-serif; font-size:64px; font-weight:500; line-height:1.15; color:#f2f4fa">Pixel Mine по ступеням</h2>
+  <div style="display:flex; flex-direction:row; gap:16px; align-items:end; flex:1">
+    <div style="height:300px; display:flex; flex-direction:column; gap:12px; flex:1; padding:24px; background:#141415; border-radius:20px">
+      
+<svg style="width:56px; height:56px; color:#ffcd2e;display:block;flex:none"
+  class="lucide lucide-book"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+</svg>
+
+      <p style="font-family:Inter, Arial, sans-serif; font-size:26px; font-weight:700; color:#f2f4fa">Задача</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.4; color:#c9cbd2">Бриф и дизайн-документ</p>
+    </div>
+    <div style="height:380px; display:flex; flex-direction:column; gap:12px; flex:1; padding:24px; background:#141415; border-radius:20px">
+      
+<svg style="width:56px; height:56px; color:#ffcd2e;display:block;flex:none"
+  class="lucide lucide-search"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8" />
+  <path d="m21 21-4.3-4.3" />
+</svg>
+
+      <p style="font-family:Inter, Arial, sans-serif; font-size:26px; font-weight:700; color:#f2f4fa">Ресёрч</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.4; color:#c9cbd2">Шрифты, руды, клетка, лор 1889</p>
+    </div>
+    <div style="height:460px; display:flex; flex-direction:column; gap:12px; flex:1; padding:24px; background:#141415; border-radius:20px">
+      
+<svg style="width:56px; height:56px; color:#ffcd2e;display:block;flex:none"
+  class="lucide lucide-settings"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+  <circle cx="12" cy="12" r="3" />
+</svg>
+
+      <p style="font-family:Inter, Arial, sans-serif; font-size:26px; font-weight:700; color:#f2f4fa">Процесс</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.4; color:#c9cbd2">Правила, 8 скиллов, Spec Kit</p>
+    </div>
+    <div style="height:540px; display:flex; flex-direction:column; gap:12px; flex:1; padding:24px; background:#141415; border-radius:20px">
+      
+<svg style="width:56px; height:56px; color:#ffcd2e;display:block;flex:none"
+  class="lucide lucide-zap"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+</svg>
+
+      <p style="font-family:Inter, Arial, sans-serif; font-size:26px; font-weight:700; color:#f2f4fa">Прототип</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.4; color:#c9cbd2">Поле, ход, спецфишки, тесты</p>
+    </div>
+    <div style="height:620px; display:flex; flex-direction:column; gap:12px; flex:1; padding:24px; background:#141415; border-radius:20px">
+      
+<svg style="width:56px; height:56px; color:#ffcd2e;display:block;flex:none"
+  class="lucide lucide-star"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+</svg>
+
+      <p style="font-family:Inter, Arial, sans-serif; font-size:26px; font-weight:700; color:#f2f4fa">MVP</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.4; color:#c9cbd2">Кампания, база, флот, сюжет</p>
+    </div>
+    <div style="height:640px; display:flex; flex-direction:column; gap:12px; flex:1; padding:24px; background:#141415; border-radius:20px">
+      
+<svg style="width:56px; height:56px; color:#ffcd2e;display:block;flex:none"
+  class="lucide lucide-badge-check"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
+  <path d="m9 12 2 2 4-4" />
+</svg>
+
+      <p style="font-family:Inter, Arial, sans-serif; font-size:26px; font-weight:700; color:#f2f4fa">Ревью</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.4; color:#c9cbd2">Телефоны, движок, новички</p>
+    </div>
+    <div style="height:664px; display:flex; flex-direction:column; gap:12px; flex:1; padding:24px; background:#ffcd2e; border-radius:20px">
+      
+<svg style="width:56px; height:56px; color:#232429;display:block;flex:none"
+  class="lucide lucide-send"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
+  <path d="m21.854 2.147-10.94 10.939" />
+</svg>
+
+      <p style="font-family:Inter, Arial, sans-serif; font-size:26px; font-weight:700; color:#232429">Запуск</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.4; color:#232429">Пакет игры и живой тест</p>
+    </div>
+  </div>
+  
+</section>
+
+<section id="returns" data-transition="fade" style="background:#141415;color:#F2F4FA;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'Grandis Extended', 'Inter', sans-serif;font-size:64px;font-weight:500;line-height:1.15">Три возврата вверх</h2>
+<div style="display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:28px;font-weight:700;background:#3A3B40;padding:16px 28px;border-radius:1000px;width:200px;text-align:center">Ревью</p>
+<div style="background:#FFCD2E;width:72px;height:36px;flex:none;clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 100%,60% 70%,0 70%)"></div>
+<p style="font-size:28px;font-weight:700;background:#FFCD2E;color:#232429;padding:16px 28px;border-radius:1000px;width:200px;text-align:center">Ресёрч</p>
+<p style="font-size:30px;line-height:1.4;flex:1;padding:0 0 0 24px"><b>Клетка 33 px.</b> <span style="color:#C9CBD2">Нашли норму 44 px, поле растёт с 4×4 до 7×7</span></p>
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:28px;font-weight:700;background:#3A3B40;padding:16px 28px;border-radius:1000px;width:200px;text-align:center">Ревью</p>
+<div style="background:#FFCD2E;width:72px;height:36px;flex:none;clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 100%,60% 70%,0 70%)"></div>
+<p style="font-size:28px;font-weight:700;background:#FFCD2E;color:#232429;padding:16px 28px;border-radius:1000px;width:200px;text-align:center">MVP</p>
+<p style="font-size:30px;line-height:1.4;flex:1;padding:0 0 0 24px"><b>«Трюм полон» пугает.</b> <span style="color:#C9CBD2">Текст переписали: добыча засчитана</span></p>
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:28px;font-weight:700;background:#3A3B40;padding:16px 28px;border-radius:1000px;width:200px;text-align:center">Прототип</p>
+<div style="background:#FFCD2E;width:72px;height:36px;flex:none;clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 100%,60% 70%,0 70%)"></div>
+<p style="font-size:28px;font-weight:700;background:#FFCD2E;color:#232429;padding:16px 28px;border-radius:1000px;width:200px;text-align:center">Задача</p>
+<p style="font-size:30px;line-height:1.4;flex:1;padding:0 0 0 24px"><b>Бот не берёт норму.</b> <span style="color:#C9CBD2">Нормы пересчитали симуляцией</span></p>
+</div>
+</div>
+<p style="font-size:32px;color:#FFCD2E">Возврат на ступень вверх входит в обычную работу лестницы</p>
+
+</section>
+
+<section id="vote" data-transition="fade" style="background:#FFCD2E;color:#232429;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:32px;font-weight:600">Голосуем</p>
+<h2 style="font-family:'Grandis Extended', 'Inter', sans-serif;font-size:64px;font-weight:500;line-height:1.15;width:1600px">Бот не может пройти первый контракт. Что чиним?</h2>
+<div style="display:flex;gap:40px">
+<p style="flex:1;font-size:44px;font-weight:700;background:#232429;color:#F2F4FA;padding:40px;border-radius:24px">А. Бота</p>
+<p style="flex:1;font-size:44px;font-weight:700;background:#232429;color:#F2F4FA;padding:40px;border-radius:24px">Б. Игру</p>
+</div>
+<p style="position:absolute;left:128px;top:820px;width:1664px;font-size:34px;line-height:1.4" data-build-in="rise"><b>Игру.</b> Бот играет как средний игрок. Если он не справляется, новичок бросит на первом же уровне. Нормы снизили</p>
+
+</section>
+
+<section id="personas" data-transition="fade" style="background:#232426;color:#F2F4FA;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:space-between">
+<h2 style="font-family:'Grandis Extended', 'Inter', sans-serif;font-size:64px;font-weight:500;line-height:1.15;width:1500px">Пять агентов играют за новичков</h2>
+<div style="display:flex;gap:32px;justify-content:space-between">
+<div style="width:280px;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="background:#FFCD2E;border-radius:1000px;width:200px;height:200px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#232429;width:100px;height:100px;display:block;flex:none"
+  class="lucide lucide-clock"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <polyline points="12 6 12 12 16 14" />
+</svg>
+</div><p style="font-size:30px;font-weight:700;text-align:center">Галина, 68</p><p style="font-size:24px;line-height:1.4;color:#C9CBD2;text-align:center">Пенсионерка, узкий Android</p></div>
+<div style="width:280px;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="background:#FFCD2E;border-radius:1000px;width:200px;height:200px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#232429;width:100px;height:100px;display:block;flex:none"
+  class="lucide lucide-play"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <polygon points="6 3 20 12 6 21 6 3" />
+</svg>
+</div><p style="font-size:30px;font-weight:700;text-align:center">Тимур, 12</p><p style="font-size:24px;line-height:1.4;color:#C9CBD2;text-align:center">Brawl Stars и Roblox</p></div>
+<div style="width:280px;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="background:#FFCD2E;border-radius:1000px;width:200px;height:200px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#232429;width:100px;height:100px;display:block;flex:none"
+  class="lucide lucide-star"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+</svg>
+</div><p style="font-size:30px;font-weight:700;text-align:center">Ольга, 35</p><p style="font-size:24px;line-height:1.4;color:#C9CBD2;text-align:center">Royal Match и Homescapes</p></div>
+<div style="width:280px;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="background:#FFCD2E;border-radius:1000px;width:200px;height:200px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#232429;width:100px;height:100px;display:block;flex:none"
+  class="lucide lucide-chart-column"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+  <path d="M18 17V9" />
+  <path d="M13 17V5" />
+  <path d="M8 17v-3" />
+</svg>
+</div><p style="font-size:30px;font-weight:700;text-align:center">Артём, 26</p><p style="font-size:24px;line-height:1.4;color:#C9CBD2;text-align:center">Стратегии и idle</p></div>
+<div style="width:280px;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="background:#FFCD2E;border-radius:1000px;width:200px;height:200px;display:flex;align-items:center;justify-content:center">
+<svg style="color:#232429;width:100px;height:100px;display:block;flex:none"
+  class="lucide lucide-search"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8" />
+  <path d="m21 21-4.3-4.3" />
+</svg>
+</div><p style="font-size:30px;font-weight:700;text-align:center">Сергей, 47</p><p style="font-size:24px;line-height:1.4;color:#C9CBD2;text-align:center">Дальтоник, играет одной рукой</p></div>
+</div>
+<div style="display:flex;gap:48px">
+<p style="flex:1;font-size:32px;line-height:1.4;color:#C9CBD2">Разный возраст и опыт. Каждый смотрит скриншоты первого захода и говорит, где испугался</p>
+<p style="flex:1;font-size:32px;line-height:1.4"><span style="color:#FFCD2E"><b>Чиним, если назвали двое.</b></span> Живой тест всё равно проводит человек</p>
+</div>
+
+</section>
+
+<section id="fails" data-transition="fade" style="display:flex; flex-direction:column; gap:48px; padding:128px; background:#141415">
+  <h2 style="font-family:'Grandis Extended', sans-serif; font-size:64px; font-weight:500; line-height:1.15; color:#f2f4fa">Агент тоже косячит</h2>
+  <div style="display:flex; flex-direction:row; gap:28px">
+    <div style="display:flex; flex-direction:column; gap:18px; flex:1; padding:40px; background:#232426; border-radius:24px">
+      
+<svg style="width:64px; height:64px; color:#ffa384;display:block;flex:none"
+  class="lucide lucide-triangle-alert"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" />
+</svg>
+
+      <h3 style="font-family:Inter, Arial, sans-serif; font-size:34px; font-weight:700; line-height:1.2; color:#f2f4fa">Стёр свою же работу</h3>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:28px; line-height:1.4; color:#c9cbd2">Одна команда git, и правки двух файлов пропали. Переделывал заново</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:18px; flex:1; padding:40px; background:#232426; border-radius:24px">
+      
+<svg style="width:64px; height:64px; color:#ffa384;display:block;flex:none"
+  class="lucide lucide-triangle-alert"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" />
+</svg>
+
+      <h3 style="font-family:Inter, Arial, sans-serif; font-size:34px; font-weight:700; line-height:1.2; color:#f2f4fa">Чуть не выложил чужое</h3>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:28px; line-height:1.4; color:#c9cbd2">Дважды пытался закоммитить в открытый репозиторий скачанные паки ассетов</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:18px; flex:1; padding:40px; background:#232426; border-radius:24px">
+      
+<svg style="width:64px; height:64px; color:#ffa384;display:block;flex:none"
+  class="lucide lucide-triangle-alert"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" />
+</svg>
+
+      <h3 style="font-family:Inter, Arial, sans-serif; font-size:34px; font-weight:700; line-height:1.2; color:#f2f4fa">Выбрал шифровку</h3>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:28px; line-height:1.4; color:#c9cbd2">Пиксельный шрифт, в котором кириллица читалась с трудом. Заменили</p>
+    </div>
+  </div>
+  <p style="font-family:Inter, Arial, sans-serif; font-size:36px; color:#ffcd2e">Поэтому строим проверки, не надеемся на доверие!</p>
+  
+</section>
+
+<section id="guards" data-transition="fade" style="background:#141415;color:#F2F4FA;font-family:'Inter', Arial, sans-serif;padding:128px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+<div style="display:flex;flex-direction:column;gap:40px">
+
+<svg style="color:#FFCD2E;width:200px;height:200px;display:block;flex:none"
+  class="lucide lucide-shield-check"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />
+</svg>
+
+<h2 style="font-family:'Grandis Extended', 'Inter', sans-serif;font-size:64px;font-weight:500;line-height:1.15">Ограничители</h2>
+<p style="font-size:32px;line-height:1.4;color:#C9CBD2">Агент ошибается уверенно. Проверки стоят там, где он не может их обойти</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px">
+<div style="background:#232426;border-radius:24px;padding:28px 32px;display:flex;gap:28px;align-items:center">
+<svg style="color:#FFCD2E;width:64px;height:64px;display:block;flex:none"
+  class="lucide lucide-activity"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
+</svg>
+<div style="display:flex;flex-direction:column;gap:6px"><h3 style="font-size:32px;font-weight:700">Эталонный прогон</h3><p style="font-size:26px;color:#C9CBD2">10 партий кадр за кадром</p></div></div>
+<div style="background:#232426;border-radius:24px;padding:28px 32px;display:flex;gap:28px;align-items:center">
+<svg style="color:#FFCD2E;width:64px;height:64px;display:block;flex:none"
+  class="lucide lucide-lock"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+</svg>
+<div style="display:flex;flex-direction:column;gap:6px"><h3 style="font-size:32px;font-weight:700">Проверка пакета</h3><p style="font-size:26px;color:#C9CBD2">В сборке только игра</p></div></div>
+<div style="background:#232426;border-radius:24px;padding:28px 32px;display:flex;gap:28px;align-items:center">
+<svg style="color:#FFCD2E;width:64px;height:64px;display:block;flex:none"
+  class="lucide lucide-users"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+</svg>
+<div style="display:flex;flex-direction:column;gap:6px"><h3 style="font-size:32px;font-weight:700">Второй агент</h3><p style="font-size:26px;color:#C9CBD2">Код-ревью без обид и без пятницы</p></div></div>
+<div style="background:#FFCD2E;color:#232429;border-radius:24px;padding:28px 32px;display:flex;gap:28px;align-items:center">
+<svg style="color:#232429;width:64px;height:64px;display:block;flex:none"
+  class="lucide lucide-key"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" />
+  <path d="m21 2-9.6 9.6" />
+  <circle cx="7.5" cy="15.5" r="5.5" />
+</svg>
+<div style="display:flex;flex-direction:column;gap:6px"><h3 style="font-size:32px;font-weight:700">Человек</h3><p style="font-size:26px">Решает необратимое</p></div></div>
+</div>
+
+</section>
+
+<section id="take" data-transition="fade" style="display:flex; flex-direction:column; gap:48px; padding:128px; background:#232426">
+  <h2 style="font-family:'Grandis Extended', sans-serif; font-size:64px; font-weight:500; line-height:1.15; color:#f2f4fa">Что взять себе завтра</h2>
+  <div style="display:flex; flex-direction:column; gap:32px">
+    <div style="display:flex; flex-direction:row; gap:40px; align-items:baseline">
+      <p style="width:100px; font-family:'Grandis Extended', sans-serif; font-size:56px; color:#ffcd2e">1</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:36px; line-height:1.4; color:#f2f4fa">Запишите правила проекта в один файл, который прочитает и агент, и новичок</p>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:40px; align-items:baseline">
+      <p style="width:100px; font-family:'Grandis Extended', sans-serif; font-size:56px; color:#ffcd2e">2</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:36px; line-height:1.4; color:#f2f4fa">Для повторяющейся задачи напишите рецепт с условием «готово, когда»</p>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:40px; align-items:baseline">
+      <p style="width:100px; font-family:'Grandis Extended', sans-serif; font-size:56px; color:#ffcd2e">3</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:36px; line-height:1.4; color:#f2f4fa">Поставьте проверку, которую агент не может пропустить</p>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:40px; align-items:baseline">
+      <p style="width:100px; font-family:'Grandis Extended', sans-serif; font-size:56px; color:#ffcd2e">4</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:36px; line-height:1.4; color:#f2f4fa">Оставьте человеку решения, которые нельзя отменить</p>
+    </div>
+  </div>
+  <p style="font-family:Inter, Arial, sans-serif; font-size:28px; color:#9a9ba3">И не давайте агенту доступ к бухгалтерии. Пока еще.</p>
+  
+</section>
+
+<section id="glossary" data-transition="fade" style="background:#141415;color:#F2F4FA;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'Grandis Extended', 'Inter', sans-serif;font-size:64px;font-weight:500;line-height:1.15">Словарик</h2>
+<div style="display:flex;gap:48px">
+<table style="font-size:24px;color:#F2F4FA;padding:10px 16px">
+<tr><th style="width:34%;color:#FFCD2E">Слово</th><th style="width:66%;color:#FFCD2E">Простыми словами</th></tr>
+<tr><td>CLI</td><td>Программа, которой управляют командами в терминале</td></tr>
+<tr><td>Golden master</td><td>Записанный эталон поведения, с которым сверяют новое</td></tr>
+<tr><td>Loop engineering</td><td>Проектирование круга работы агента и условия выхода</td></tr>
+<tr><td>MCP</td><td>Стандартная розетка для подключения программ к агенту</td></tr>
+<tr><td>MVP</td><td>Самая маленькая версия, которую уже можно дать людям</td></tr>
+<tr><td>PRD</td><td>Документ: что делаем, для кого и как поймём, что вышло</td></tr>
+<tr><td>Агент</td><td>ИИ, который сам делает шаги, а не только отвечает</td></tr>
+<tr><td>Инструмент</td><td>Действие агента: прочитать файл, запустить, открыть</td></tr>
+<tr><td>Ограничитель</td><td>Проверка, которую агент не может обойти</td></tr>
+</table>
+<table style="font-size:24px;color:#F2F4FA;padding:10px 16px">
+<tr><th style="width:34%;color:#FFCD2E">Слово</th><th style="width:66%;color:#FFCD2E">Простыми словами</th></tr>
+<tr><td>Персона</td><td>Агент, который играет за выдуманного игрока</td></tr>
+<tr><td>Плагин</td><td>Скиллы и розетки одним пакетом</td></tr>
+<tr><td>Правила</td><td>Файл с памяткой о проекте, агент читает его первым</td></tr>
+<tr><td>Прототип, PoC</td><td>Быстрая проверка, что идея вообще работает</td></tr>
+<tr><td>Ресёрч</td><td>Проверка, решалась ли задача раньше и как</td></tr>
+<tr><td>Скилл</td><td>Рецепт одной задачи с шагами и критерием готовности</td></tr>
+<tr><td>Субагент</td><td>Второй агент для отдельной задачи или свежего взгляда</td></tr>
+<tr><td>Хук</td><td>Проверка, которая срабатывает сама в нужный момент</td></tr>
+<tr><td>Чат</td><td>ИИ, который отвечает, а делаете вы</td></tr>
+</table>
+</div>
+
+</section>
+
+<section id="end" data-transition="fade" style="display:flex; flex-direction:column; gap:48px; justify-content:center; padding:128px; background:#141415">
+  <h1 style="font-family:'Grandis Extended', sans-serif; font-size:96px; font-weight:500; line-height:1.1; color:#f2f4fa">Вопросы</h1>
+  <p style="font-family:Inter, Arial, sans-serif; font-size:30px; color:#c9cbd2">Весь проект открыт: код, скиллы, ресёрч и история коммитов</p>
+  <p style="font-family:Inter, Arial, sans-serif; font-size:36px; color:#ffcd2e"></p>
+  <p id="ac46486b" style="position:absolute; top:calc(50% + 124.13px); left:128px; width:720px; font-family:Inter, Arial, sans-serif; color:#f2f4fa; transform:translateY(-50%)">github.com/aa-blinov/i-dig-it-pixel-mine</p>
+</section>
+
+</body></html>
