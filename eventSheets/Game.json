@@ -1,0 +1,26 @@
+{
+	"name": "Game",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 667152848494289
+				}
+			],
+			"actions": [
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"PixelMine.start(runtime);"
+					]
+				}
+			],
+			"sid": 205607473489152
+		}
+	],
+	"sid": 509272874282144
+}

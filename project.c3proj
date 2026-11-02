@@ -1,0 +1,819 @@
+{
+	"projectFormatVersion": 1,
+	"savedWithRelease": 50600,
+	"name": "I Dig It: Pixel Mine",
+	"runtime": "c3",
+	"useWorker": "dom",
+	"bundleAddons": false,
+	"usedAddons": [
+		{
+			"type": "plugin",
+			"id": "Sprite",
+			"name": "Sprite",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Text",
+			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		}
+	],
+	"uniqueId": "8zdixfq3wcp",
+	"objectTypes": {
+		"items": [
+			"ScoreText",
+			"MovesText",
+			"StatusText",
+			"Backdrop",
+			"Spark",
+			"Selection",
+			"GaugeNeedle",
+			"MineDrill",
+			"RelicRing",
+			"RelicIdol",
+			"RelicFossil",
+			"BoostFuel",
+			"BoostDynamite",
+			"BoostDrill",
+			"SoundButton",
+			"LootText",
+			"CampBackdrop",
+			"ScanMark",
+			"GoalFill",
+			"UIText",
+			"Ore",
+			"SpecialMark",
+			"BoardTile",
+			"Blast",
+			"Ring",
+			"PopText",
+			"Cage",
+			"Miner"
+		],
+		"subfolders": []
+	},
+	"functionsName": "Functions",
+	"autosaveData": null,
+	"containers": [],
+	"families": {
+		"items": [],
+		"subfolders": []
+	},
+	"layouts": {
+		"items": [
+			"Play"
+		],
+		"subfolders": []
+	},
+	"eventSheets": {
+		"items": [
+			"Game"
+		],
+		"subfolders": []
+	},
+	"rootFileFolders": {
+		"script": {
+			"items": [
+				{
+					"name": "importsForEvents.js",
+					"type": "application/javascript",
+					"sid": 209278586929615,
+					"script-info": {
+						"purpose": "imports-for-events"
+					}
+				}
+			],
+			"subfolders": [
+				{
+					"name": "pixel-mine",
+					"items": [
+						{
+							"name": "config.js",
+							"type": "application/javascript",
+							"sid": 249972271981191,
+							"script-info": {
+								"purpose": "none"
+							}
+						},
+						{
+							"name": "host.js",
+							"type": "application/javascript",
+							"sid": 259019941031997,
+							"script-info": {
+								"purpose": "none"
+							}
+						},
+						{
+							"name": "index.js",
+							"type": "application/javascript",
+							"sid": 279357612629299,
+							"script-info": {
+								"purpose": "none"
+							}
+						},
+						{
+							"name": "story.js",
+							"type": "application/javascript",
+							"sid": 111609802002696,
+							"script-info": {
+								"purpose": "none"
+							}
+						}
+					],
+					"subfolders": [
+						{
+							"name": "game",
+							"items": [
+								{
+									"name": "animation.js",
+									"type": "application/javascript",
+									"sid": 249841480200899,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "audio.js",
+									"type": "application/javascript",
+									"sid": 159462577532655,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "basecamp.js",
+									"type": "application/javascript",
+									"sid": 265500538928489,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "board.js",
+									"type": "application/javascript",
+									"sid": 118786207050897,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "hud.js",
+									"type": "application/javascript",
+									"sid": 264514944917426,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "input.js",
+									"type": "application/javascript",
+									"sid": 11511576866214,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "round.js",
+									"type": "application/javascript",
+									"sid": 280530306701661,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "turn.js",
+									"type": "application/javascript",
+									"sid": 272144987351184,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "types.js",
+									"type": "application/javascript",
+									"sid": 46214511258296,
+									"script-info": {
+										"purpose": "none"
+									}
+								}
+							],
+							"subfolders": []
+						},
+						{
+							"name": "model",
+							"items": [
+								{
+									"name": "abilities.js",
+									"type": "application/javascript",
+									"sid": 174583844655930,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "base.js",
+									"type": "application/javascript",
+									"sid": 238389741763454,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "challenge.js",
+									"type": "application/javascript",
+									"sid": 119764268826419,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "collections.js",
+									"type": "application/javascript",
+									"sid": 182194202598751,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "contracts.js",
+									"type": "application/javascript",
+									"sid": 279636350895049,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "economy.js",
+									"type": "application/javascript",
+									"sid": 178137526844753,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "effects.js",
+									"type": "application/javascript",
+									"sid": 204615717840409,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "finds.js",
+									"type": "application/javascript",
+									"sid": 221572261546727,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "fleet.js",
+									"type": "application/javascript",
+									"sid": 39461721337676,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "gifts.js",
+									"type": "application/javascript",
+									"sid": 210419277103914,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "grid.js",
+									"type": "application/javascript",
+									"sid": 173154567251247,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "index.js",
+									"type": "application/javascript",
+									"sid": 280454018937727,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "profile.js",
+									"type": "application/javascript",
+									"sid": 70203362552780,
+									"script-info": {
+										"purpose": "none"
+									}
+								}
+							],
+							"subfolders": []
+						},
+						{
+							"name": "ui",
+							"items": [
+								{
+									"name": "canvas-ui.js",
+									"type": "application/javascript",
+									"sid": 232565203209151,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "challenge-dialog.js",
+									"type": "application/javascript",
+									"sid": 117852994818748,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "cockpit.js",
+									"type": "application/javascript",
+									"sid": 47068404720283,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "dialog-markup.js",
+									"type": "application/javascript",
+									"sid": 82779184962045,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "dom-markup.js",
+									"type": "application/javascript",
+									"sid": 111729456246981,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "dom-ui.js",
+									"type": "application/javascript",
+									"sid": 232734218325418,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "intro.js",
+									"type": "application/javascript",
+									"sid": 276417350145037,
+									"script-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "postcard.js",
+									"type": "application/javascript",
+									"sid": 149397649211038,
+									"script-info": {
+										"purpose": "none"
+									}
+								}
+							],
+							"subfolders": []
+						}
+					]
+				}
+			]
+		},
+		"sound": {
+			"items": [],
+			"subfolders": []
+		},
+		"music": {
+			"items": [],
+			"subfolders": []
+		},
+		"video": {
+			"items": [],
+			"subfolders": []
+		},
+		"font": {
+			"items": [],
+			"subfolders": []
+		},
+		"icon": {
+			"items": [
+				{
+					"name": "loading-logo.png",
+					"type": "image/png",
+					"sid": 591705440492553,
+					"icon-info": {
+						"purpose": "loading-logo"
+					}
+				},
+				{
+					"name": "icon-16.png",
+					"type": "image/png",
+					"sid": 937960536922804,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-128.png",
+					"type": "image/png",
+					"sid": 545151410994892,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-256.png",
+					"type": "image/png",
+					"sid": 610329293560655,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-512.png",
+					"type": "image/png",
+					"sid": 208560364582292,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-64.png",
+					"type": "image/png",
+					"sid": 219862170233276,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-32.png",
+					"type": "image/png",
+					"sid": 119431639064373,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"general": {
+			"items": [
+				{
+					"name": "mine-select.ogg",
+					"type": "audio/ogg",
+					"sid": 20915111184937,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "mine-swap.ogg",
+					"type": "audio/ogg",
+					"sid": 139597440780806,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "mine-dig.ogg",
+					"type": "audio/ogg",
+					"sid": 181667438447529,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "mine-find.ogg",
+					"type": "audio/ogg",
+					"sid": 263354458910930,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "mine-boost.ogg",
+					"type": "audio/ogg",
+					"sid": 277849191023030,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "GolosText.ttf",
+					"type": "font/ttf",
+					"sid": 164546669154040,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "GolosText-OFL.txt",
+					"type": "text/plain",
+					"sid": 214159980455219,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "b-storage.png",
+					"type": "image/png",
+					"sid": 85112447798191,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "b-smelter.png",
+					"type": "image/png",
+					"sid": 132957727695232,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "b-autodrill.png",
+					"type": "image/png",
+					"sid": 50980278800050,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "b-generator.png",
+					"type": "image/png",
+					"sid": 230943487770174,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "b-quarters.png",
+					"type": "image/png",
+					"sid": 171991661989748,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "b-lift.png",
+					"type": "image/png",
+					"sid": 271279660409131,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "b-lab.png",
+					"type": "image/png",
+					"sid": 107483229578808,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "b-museum.png",
+					"type": "image/png",
+					"sid": 257950224849672,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "b-dock.png",
+					"type": "image/png",
+					"sid": 143989517218564,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "b-lantern.png",
+					"type": "image/png",
+					"sid": 1661509231583,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "b-cart.png",
+					"type": "image/png",
+					"sid": 60950484938283,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "b-rails.png",
+					"type": "image/png",
+					"sid": 47294716938269,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "b-statue.png",
+					"type": "image/png",
+					"sid": 152245129097121,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "i-dynamite.png",
+					"type": "image/png",
+					"sid": 128629952084036,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "i-cutter.png",
+					"type": "image/png",
+					"sid": 116999610097094,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "i-borer.png",
+					"type": "image/png",
+					"sid": 225963290825863,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "i-magnet.png",
+					"type": "image/png",
+					"sid": 15960790090395,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "i-seismo.png",
+					"type": "image/png",
+					"sid": 238694941301607,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "i-shuffle.png",
+					"type": "image/png",
+					"sid": 32738606690780,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "i-reserve.png",
+					"type": "image/png",
+					"sid": 168558645926935,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "i-rush.png",
+					"type": "image/png",
+					"sid": 170031614254535,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "i-lock.png",
+					"type": "image/png",
+					"sid": 175254484077653,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "i-soundon.png",
+					"type": "image/png",
+					"sid": 44634605881838,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "i-soundoff.png",
+					"type": "image/png",
+					"sid": 26421543614699,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "PressStart2P-ru.ttf",
+					"type": "font/ttf",
+					"sid": 199365123863553,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Handjet-ru.ttf",
+					"type": "font/ttf",
+					"sid": 101981427643712,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "pressstart2p-OFL.txt",
+					"type": "text/plain",
+					"sid": 238452662703722,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "handjet-OFL.txt",
+					"type": "text/plain",
+					"sid": 158607293155257,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		}
+	},
+	"timelines": {
+		"items": [],
+		"subfolders": []
+	},
+	"flowcharts": {
+		"items": [],
+		"subfolders": []
+	},
+	"properties": {
+		"description": "Mining contracts, persistent workshop, capped upgrade builds and fair seeded daily challenges. CC0 material art by acdrnx and gearshocky; sounds by Kenney.",
+		"version": "1.0.0.0",
+		"autoIncrementVersion": false,
+		"author": "",
+		"authorEmail": "",
+		"authorWebsite": "",
+		"appId": "",
+		"pixelRounding": true,
+		"zAxisScale": "normalized",
+		"fov": 0.7853981633974483,
+		"useLoaderLayout": false,
+		"fullscreenMode": "letterbox-scale",
+		"fullscreenQuality": "high",
+		"viewportFit": "auto",
+		"backgroundColor": [
+			0.06274509803921569,
+			0.07450980392156863,
+			0.10980392156862745,
+			1
+		],
+		"splashColor": [
+			0.06274509803921569,
+			0.07450980392156863,
+			0.10980392156862745,
+			1
+		],
+		"useThemeColor": false,
+		"themeColor": [
+			0.06274509803921569,
+			0.07450980392156863,
+			0.10980392156862745,
+			1
+		],
+		"orientations": "portrait",
+		"webgpu": "auto",
+		"multitexturing": "auto",
+		"gpuPreference": "high-performance",
+		"scriptsType": "module",
+		"framerateMode": "vsync",
+		"sampling": "trilinear",
+		"downscaling": "medium",
+		"renderingMode": "auto",
+		"anisotropicFiltering": "auto",
+		"zNear": 1,
+		"zFar": 10000,
+		"maxSpriteSheetSize": 2048,
+		"loaderStyle": "splash",
+		"preloadSounds": true,
+		"cordovaiOSScheme": "app",
+		"cordovaAndroidScheme": "https",
+		"exportFileStructure": "folders",
+		"uidAllocationMode": "increment",
+		"name": "Match 3",
+		"firstLayout": "Play"
+	},
+	"viewportWidth": 720,
+	"viewportHeight": 1280,
+	"firstLayout": "Play"
+}

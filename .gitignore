@@ -1,0 +1,20 @@
+# Build output: the packed game and generated reports (tools/pack.mjs, tools/audit-project.mjs, tests/simulate-*.mjs)
+build/
+.pack-stage/
+*.c3p
+node_modules/
+
+# Local tool settings
+.omp/
+.claude/settings.local.json
+
+# Editor backups; git is the history
+*.bak
+
+# Third-party downloads: archives and raw packs. Their sources and licences
+# are listed in docs/art-bible/assets.md. The small sources the build scripts need
+# (game fonts, vector ores) stay in the repository.
+assets/source/*
+!assets/source/fonts-game/
+!assets/source/hd/
+assets/source/hd/*.png
