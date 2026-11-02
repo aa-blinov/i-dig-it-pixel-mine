@@ -1,0 +1,10 @@
+{
+	"name": "LootText",
+	"plugin-id": "Text",
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"sid": 240678105853929,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

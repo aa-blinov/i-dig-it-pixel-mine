@@ -1,0 +1,10 @@
+{
+	"name": "PopText",
+	"plugin-id": "Text",
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"sid": 768782181426769,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

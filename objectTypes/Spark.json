@@ -1,0 +1,52 @@
+{
+	"name": "Spark",
+	"plugin-id": "Sprite",
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"sid": 665399998123497,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 224,
+						"height": 224,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"duration": 1,
+						"tag": "",
+						"useCollisionPoly": true,
+						"collisionPoly": {
+							"points": [
+								0,
+								0,
+								1,
+								0,
+								1,
+								1,
+								0,
+								1
+							]
+						},
+						"imageSpriteId": 2612318
+					}
+				],
+				"sid": 146192157816911,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

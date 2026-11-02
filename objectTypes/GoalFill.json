@@ -1,0 +1,52 @@
+{
+	"name": "GoalFill",
+	"plugin-id": "Sprite",
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"sid": 696135730632936,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 64,
+						"height": 64,
+						"originX": 0,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"duration": 1,
+						"tag": "",
+						"useCollisionPoly": true,
+						"collisionPoly": {
+							"points": [
+								0,
+								0,
+								1,
+								0,
+								1,
+								1,
+								0,
+								1
+							]
+						},
+						"imageSpriteId": 8148204
+					}
+				],
+				"sid": 151639763546246,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

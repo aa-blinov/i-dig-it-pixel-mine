@@ -1,0 +1,10 @@
+{
+	"name": "MovesText",
+	"plugin-id": "Text",
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"sid": 455079389791355,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}
